@@ -125,6 +125,7 @@ def launch():
 
 
 if __name__ == '__main__':
+    # TODO: find way to run model with limited GPU space
     launch()
     # device = "cuda"
     # model = UNet_conditional(num_classes=10).to(device)
