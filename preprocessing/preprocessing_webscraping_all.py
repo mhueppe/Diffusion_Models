@@ -4,6 +4,7 @@
 from typing import Tuple, List
 from multiprocessing import Process, Lock, Value
 import requests
+from threading import Thread
 from bs4 import BeautifulSoup
 import os
 from preprocessing_uniform_data import uniform, center_focus, resize_and_save
@@ -132,6 +133,14 @@ def remove_corrupted_images(path: str):
             print(f"Removed {file} because it is corrupted.")
 
 
+def load_pokemons_thread(pokemons:list, shared_count:Value, total:int = 903):
+    for pokemon in pokemons:
+        shared_count.value = shared_count.value + 1
+        print(
+            f"{shared_count.value}/{total}. Current pokemon: {pokemon.replace('https://pokemondb.net/pokedex/', '')}")
+
+        imagedown(pokemon, folder=r"C:\Users\mhueppe.LAPTOP-PKNG4OSF\MasterInformatik\Semester_1\ImageDiffusion\data\pokemon")
+
 def load_pokemons(pokemons: list, shared_count: Value, total: int = 903):
     """
     Load all the pokemons in the list.
@@ -140,12 +149,17 @@ def load_pokemons(pokemons: list, shared_count: Value, total: int = 903):
     :return:
     """
     print(f"Start loading pokemon: {pokemons}")
-    for pokemon in pokemons:
-        shared_count.value = shared_count.value + 1
-        print(
-            f"{shared_count.value}/{total}. Current pokemon: {pokemon.replace('https://pokemondb.net/pokedex/', '')}")
+    pokemons_devided = distribute(pokemons, 5)
+    loadingThreads = []
+    # Define a shared integer variable
+    for group in pokemons_devided:
+        t = Thread(target=load_pokemons_thread, args=(group, shared_count, total))
+        t.start()
+        loadingThreads.append(t)
 
-        imagedown(pokemon, folder=r"C:\Users\mhueppe.LAPTOP-PKNG4OSF\MasterInformatik\Semester_1\ImageDiffusion\data")
+    for lt in loadingThreads:
+        lt.join()
+
 
 
 def distribute(original_list, n) -> List[List]:
@@ -175,7 +189,7 @@ if __name__ == "__main__":
     pokemons = get_pokemon(url)[1:]
 
     # A lot of the time is spent waiting for a request.
-    pokemons_devided = distribute(pokemons, 5)
+    pokemons_devided = distribute(pokemons, 3)
     loadingThreads = []
     # Define a shared integer variable
     count = Value("i", 0)
