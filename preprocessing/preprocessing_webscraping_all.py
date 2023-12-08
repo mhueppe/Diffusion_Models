@@ -7,7 +7,7 @@ import requests
 from threading import Thread
 from bs4 import BeautifulSoup
 import os
-from preprocessing_uniform_data import uniform, center_focus, resize_and_save
+from .preprocessing_uniform_data import uniform, center_focus, resize_and_save
 import io
 import PIL
 from PIL import Image
@@ -87,19 +87,26 @@ def download(images: str, save_path: str, n_retries: int = 5):
             continue
 
         path = os.path.join(save_path, name)
+        if os.path.exists(path):
+            continue
         if '.gif' not in name:
             for i in range(n_retries):
                 try:
                     with open(path, 'wb') as f:
                         im = requests.get(image)
                         f.write(im.content)
+                        break
                 except ConnectionError:
                     print("Reconnecting")
+                except requests.exceptions.MissingSchema:
+                    print(f"MissingSchema {image}")
             try:
                 # make all the images uniform
                 uniform(path, 64, 64)
             except PermissionError:
                 print(f"{path} gave permission error")
+            except:
+                print(f"{path} didn't work")
 
 
 def imagedown(url, folder):
@@ -139,7 +146,7 @@ def load_pokemons_thread(pokemons:list, shared_count:Value, total:int = 903):
         print(
             f"{shared_count.value}/{total}. Current pokemon: {pokemon.replace('https://pokemondb.net/pokedex/', '')}")
 
-        imagedown(pokemon, folder=r"C:\Users\mhueppe.LAPTOP-PKNG4OSF\MasterInformatik\Semester_1\ImageDiffusion\data\pokemon")
+        imagedown(pokemon, folder=r"data\raw")
 
 def load_pokemons(pokemons: list, shared_count: Value, total: int = 903):
     """
@@ -185,19 +192,39 @@ def distribute(original_list, n) -> List[List]:
 if __name__ == "__main__":
     # for every pokemon found in the first site (the national pokedex) find every possible sprite for it
     # and make a new folder with its name (or not)
-    url = 'https://pokemondb.net/pokedex/national'
-    pokemons = get_pokemon(url)[1:]
+    scrape = True
+    if scrape:
+        url = 'https://pokemondb.net/pokedex/national'
+        pokemons = get_pokemon(url)[1:]
 
-    # A lot of the time is spent waiting for a request.
-    pokemons_devided = distribute(pokemons, 3)
-    loadingThreads = []
-    # Define a shared integer variable
-    count = Value("i", 0)
+        # A lot of the time is spent waiting for a request.
+        pokemons_devided = distribute(pokemons, 1)
+        loadingThreads = []
+        # Define a shared integer variable
+        count = Value("i", 0)
 
-    for group in pokemons_devided:
-        t = Process(target=load_pokemons, args=(group, count, len(pokemons)))
-        t.start()
-        loadingThreads.append(t)
+        for group in pokemons_devided:
+            t = Process(target=load_pokemons, args=(group, count, len(pokemons)))
+            t.start()
+            loadingThreads.append(t)
 
-    for lt in loadingThreads:
-        lt.join()
+        for lt in loadingThreads:
+            lt.join()
+    save_path = "data/pokemon"
+    images = os.listdir(save_path)
+
+    # sometimes do to laggy internet it doesn't resize properly only do this if
+    # if you can see that there are wrongly sized images in your data folder (checks before resizing but still)
+    # n = len(images)
+    # for c, image in enumerate(images):
+    #     print(f"{c}/{n} {image}")
+    #     image_path = os.path.join(save_path, image)
+    #     if "artwork" in image:
+    #         resize_and_save(image_path, 64, 64)
+    #     try:
+    #         if "artwork" not in image and "sprite" in image:
+    #             center_focus(image_path)
+    #     except Exception as e:
+    #         print("Failed to center: ", image, "with exception", e)
+    #
+    # remove_corrupted_images(save_path)

@@ -1,12 +1,14 @@
 import os
 import shutil
+
+import PIL
 from PIL import Image
 import cv2
 import numpy as np
 import ntpath
 
 
-def overwrite(img, image_path, jpg_path):
+def overwrite(img, image_path, jpg_path = None):
     if jpg_path is not None:
         img.save(image_path, "PNG")  # and save the new one
         os.remove(jpg_path)  # remove the original image
@@ -37,12 +39,14 @@ def resize_and_convert(image_path, image_width = 64, image_height = 64):
 
 
 def resize_and_save(image_path = None, image_width = 64, image_height = 64):
-    img = Image.open(image_path)
-
-    if img.size != (image_height, image_width):
-        img = img.resize((image_height, image_width))  # resize to 64,64,3
-        os.remove(image_path)  # remove the original image
-        img.save(image_path, 'PNG')  # save the new image
+    try:
+        img = Image.open(image_path)
+        if img.size != (image_height, image_width):
+            img = img.resize((image_height, image_width))  # resize to 64,64,3
+            os.remove(image_path)  # remove the original image
+            img.save(image_path, 'PNG')  # save the new image
+    except PIL.UnidentifiedImageError:
+        pass
 
 def resize(img = None,image_path = None, image_width = 64, image_height = 64):
     if img is None:
@@ -185,7 +189,10 @@ def path_leaf(path):
 
 def uniform(image_path, image_height=64, image_width=64):
     # uniform the filetype
-    image_path = make_png(image_path)
+    try:
+        image_path = make_png(image_path)
+    except PIL.UnidentifiedImageError:
+        pass
     try:
         # uniform the size and the transparency
         resize_and_convert(image_path, image_height, image_width)

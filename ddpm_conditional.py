@@ -67,7 +67,7 @@ def train(args):
     setup_logging(args.run_name)
     device = args.device
     dataloader = get_data(args)
-    model = UNet_conditional(num_classes=args.num_classes).to(device)
+    model = UNet_conditional(num_classes=args.num_classes, device=device).to(device)
     optimizer = optim.AdamW(model.parameters(), lr=args.lr)
     mse = nn.MSELoss()
     diffusion = Diffusion(img_size=args.image_size, device=device)
@@ -115,11 +115,11 @@ def launch():
     args = parser.parse_args()
     args.run_name = "DDPM_conditional"
     args.epochs = 300
-    args.batch_size = 2
+    args.batch_size = 32
     args.image_size = 64
-    args.num_classes = 10
-    args.dataset_path = r"C:\Users\mhueppe.LAPTOP-PKNG4OSF\MasterInformatik\Semester_1\ImageDiffusion\data\cifar10-64\train"
-    args.device = "cuda"
+    args.num_classes = 14
+    args.dataset_path = r"preprocessing\data\raw"
+    args.device = "cpu"
     args.lr = 3e-4
     train(args)
 
