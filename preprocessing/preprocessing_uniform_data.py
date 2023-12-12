@@ -55,18 +55,18 @@ def resize(img = None,image_path = None, image_width = 64, image_height = 64):
 # uniform file type
 def make_png(image_path):
     # removing any non png and converting it into png (jpeg, jpg)
-    if ".png" in image_path: return image_path
     img = Image.open(image_path)
+    if ".png" in image_path: return img
     if ".jpg" in image_path:
         fp = image_path.replace(".jpg", ".png")
         img.save(fp, "PNG")
         os.remove(image_path)
-        return fp
+        return Image.open(fp)
     if ".jpeg" in image_path:
         fp = image_path.replace(".jpeg", ".png")
         img.save(fp, "PNG")
         os.remove(image_path)
-        return fp
+        return Image.open(fp)
 
 
 # uniform the backgrounds
@@ -93,21 +93,21 @@ def make_white(img, b=0, g=0, r=0):
 
 
 # check for white background
-def uniform_background(image_path, r=0, g=0, b=0):
-    cv_img = cv2.imread(image_path)
+def uniform_background(img, r=0, g=0, b=0):
+    cv_img = cv2.imread(img)
 
     number_of_white_pix = np.sum(cv_img == (255, 255, 255))
     number_of_other_pix = np.sum(cv_img == (r, g, b))
+    img = Image.open(image_path)
 
     # if there are more black/green/red/blue pixels than white change them to white
     # the background has a very distinct color (126 for the respective color channel)
     # which is only used as a background because of resizing the there are also very few
     # complete black pixel (rather really dark grey but 0,0,0 is only used in the background)
     if number_of_white_pix < number_of_other_pix:
-        img = Image.open(image_path)
         img2 = make_white(img)  # make the background white
-        os.remove(image_path)  # remove and save it
-        img2.save(image_path, "PNG")
+        return img2
+    return img
 
 
 def pad_to_square(img):
@@ -168,14 +168,12 @@ def center_focus(image_path, tol=255, border=4):
     # You may need to convert the color.
     img1 = cv2.cvtColor(img1, cv2.COLOR_BGR2RGB)
     img1 = Image.fromarray(img1)
-    # only resize and save if it doesn't destroy the original image
-    img1 = resize(img1, image_path)
-
-    if np.sum(convert_pil_to_cv(img1) == (255, 255, 255)) > (128 * 128 * 3) - 2000:
-        print(f"{path_leaf(image_path)} would have been destroyed")
-        resize_and_save(convert_cv_to_pil(img), image_path)
+    n_pixels = img1.size[0] * img1.size[1] * 3
+    if np.sum(convert_pil_to_cv(img1) == (255, 255, 255)) > n_pixels*0.9:
+        print(f"{Path(image_path).name} would have been destroyed")
+        return img
     else:
-        overwrite(img1, image_path)
+        return img1
 
 
 def path_leaf(path):
@@ -185,14 +183,15 @@ def path_leaf(path):
 
 def uniform(image_path, image_height=64, image_width=64):
     # uniform the filetype
-    image_path = make_png(image_path)
+    img = make_png(image_path)
+    img = uniform_background(img)
+    img = center_focus(img)
     try:
         # uniform the size and the transparency
         resize_and_convert(image_path, image_height, image_width)
     except:
         resize_and_save(image_path)
     # uniform the backgrounds
-    uniform_background(image_path)
 
 
 if __name__ == "__main__":

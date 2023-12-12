@@ -1,3 +1,4 @@
+import math
 
 import torch
 import torch.nn as nn
@@ -126,29 +127,29 @@ class Up(nn.Module):
 
 
 class UNet(nn.Module):
-    def __init__(self, c_in=3, c_out=3, time_dim=256, device="cuda"):
+    def __init__(self, c_in=3, c_out=3, time_dim=256, device="cuda", image_size=64):
         super().__init__()
         self.device = device
         self.time_dim = time_dim
-        self.inc = DoubleConv(c_in, 64)
-        self.down1 = Down(64, 128)
-        self.sa1 = SelfAttention(128, 32)
-        self.down2 = Down(128, 256)
-        self.sa2 = SelfAttention(256, 16)
-        self.down3 = Down(256, 256)
-        self.sa3 = SelfAttention(256, 8)
+        self.inc = DoubleConv(c_in, image_size)
+        self.down1 = Down(image_size, image_size*1, image_size*2)
+        self.sa1 = SelfAttention(image_size*1, image_size//2)
+        self.down2 = Down(image_size*1, image_size*2, image_size*2)
+        self.sa2 = SelfAttention(image_size*2, image_size//4)
+        self.down3 = Down(image_size*2, image_size*2, image_size*2)
+        self.sa3 = SelfAttention(image_size*2, image_size//8)
 
-        self.bot1 = DoubleConv(256, 512)
-        self.bot2 = DoubleConv(512, 512)
-        self.bot3 = DoubleConv(512, 256)
+        self.bot1 = DoubleConv(image_size*2, image_size*4)
+        self.bot2 = DoubleConv(image_size*4, image_size*4)
+        self.bot3 = DoubleConv(image_size*4, image_size*2)
 
-        self.up1 = Up(512, 128)
-        self.sa4 = SelfAttention(128, 16)
-        self.up2 = Up(256, 64)
-        self.sa5 = SelfAttention(64, 32)
-        self.up3 = Up(128, 64)
-        self.sa6 = SelfAttention(64, 64)
-        self.outc = nn.Conv2d(64, c_out, kernel_size=1)
+        self.up1 = Up(image_size*4, image_size*1, image_size**2)
+        self.sa4 = SelfAttention(image_size*1, image_size/8)
+        self.up2 = Up(image_size*2, image_size, image_size**2)
+        self.sa5 = SelfAttention(image_size, image_size/8)
+        self.up3 = Up(image_size*1, image_size, image_size**2)
+        self.sa6 = SelfAttention(image_size, image_size)
+        self.outc = nn.Conv2d(image_size, c_out, kernel_size=1)
 
     def pos_encoding(self, t, channels):
         inv_freq = 1.0 / (
@@ -187,32 +188,35 @@ class UNet(nn.Module):
 
 
 class UNet_conditional(nn.Module):
-    def __init__(self, c_in=3, c_out=3, time_dim=256, num_classes=None, device="cuda"):
+    def __init__(self, c_in=3, c_out=3, num_classes=None, device="cuda", image_size=64, scalingFactor = 1):
         super().__init__()
         self.device = device
-        self.time_dim = time_dim
-        self.inc = DoubleConv(c_in, 64)
-        self.down1 = Down(64, 128)
-        self.sa1 = SelfAttention(128, 32)
-        self.down2 = Down(128, 256)
-        self.sa2 = SelfAttention(256, 16)
-        self.down3 = Down(256, 256)
-        self.sa3 = SelfAttention(256, 8)
+        self.prod = lambda *args: math.prod(args)
+        self.reduc = lambda x,y: x/y
+        self.sF = lambda x, f: int(f(image_size, x*scalingFactor))
+        self.time_dim = self.sF(4, self.prod)
+        self.inc = DoubleConv(c_in, self.sF(1, self.prod))
+        self.down1 = Down(self.sF(1, self.prod), self.sF(2, self.prod), self.sF(4, self.prod))
+        self.sa1 = SelfAttention(self.sF(2, self.prod), self.sF(2/scalingFactor, self.reduc))
+        self.down2 = Down(self.sF(2, self.prod), self.sF(4, self.prod), self.sF(4, self.prod))
+        self.sa2 = SelfAttention(self.sF(4, self.prod), self.sF(4/scalingFactor, self.reduc))
+        self.down3 = Down(self.sF(4, self.prod), self.sF(4, self.prod), self.sF(4, self.prod))
+        self.sa3 = SelfAttention(self.sF(4, self.prod), self.sF(8/scalingFactor, self.reduc))
 
-        self.bot1 = DoubleConv(256, 512)
-        self.bot2 = DoubleConv(512, 512)
-        self.bot3 = DoubleConv(512, 256)
+        self.bot1 = DoubleConv(self.sF(4, self.prod), self.sF(8, self.prod))
+        self.bot2 = DoubleConv(self.sF(8, self.prod), self.sF(8, self.prod))
+        self.bot3 = DoubleConv(self.sF(8, self.prod), self.sF(4, self.prod))
 
-        self.up1 = Up(512, 128)
-        self.sa4 = SelfAttention(128, 16)
-        self.up2 = Up(256, 64)
-        self.sa5 = SelfAttention(64, 32)
-        self.up3 = Up(128, 64)
-        self.sa6 = SelfAttention(64, 64)
-        self.outc = nn.Conv2d(64, c_out, kernel_size=1)
+        self.up1 = Up(self.sF(8, self.prod), self.sF(2, self.prod), self.sF(4, self.prod))
+        self.sa4 = SelfAttention(self.sF(2, self.prod), self.sF(4/scalingFactor, self.reduc))
+        self.up2 = Up(self.sF(4, self.prod), self.sF(1, self.prod), self.sF(4, self.prod))
+        self.sa5 = SelfAttention(self.sF(1, self.prod), self.sF(2/scalingFactor, self.reduc))
+        self.up3 = Up(self.sF(2, self.prod), image_size, self.sF(4, self.prod))
+        self.sa6 = SelfAttention(image_size, image_size)
+        self.outc = nn.Conv2d(image_size, c_out, kernel_size=1)
 
         if num_classes is not None:
-            self.label_emb = nn.Embedding(num_classes, time_dim)
+            self.label_emb = nn.Embedding(num_classes, self.time_dim)
 
     def pos_encoding(self, t, channels):
         inv_freq = 1.0 / (
@@ -254,8 +258,7 @@ class UNet_conditional(nn.Module):
 
 
 if __name__ == '__main__':
-    # net = UNet(device="cpu")
-    net = UNet_conditional(num_classes=10, device="cpu")
+    net = UNet_conditional(num_classes=10, device="cpu", scalingFactor=0.25)
     print(sum([p.numel() for p in net.parameters()]))
     x = torch.randn(3, 3, 64, 64)
     t = x.new_tensor([500] * x.shape[0]).long()

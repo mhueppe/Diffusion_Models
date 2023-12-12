@@ -17,7 +17,16 @@
 % \selectlanguage{german}
 
 % If the thesis is written in English:
-\usepackage[english]{babel} 						
+\usepackage[english]{babel} 
+\usepackage{acronym}
+
+% Define abbreviations using \acrodef{<label>}{<abbreviation>}
+\acrodef{HTML}{Hypertext Markup Language}
+\acrodef{GAN}{Generative Adversarial Network}
+\acrodef{DCGAN}{Deep Convolutional Generative Adversarial Network}
+\acrodef{DDPM}{Denoising Diffusion Probabilistic Models}
+\acrodef{MSE}{Mean-square Error}
+\usepackage{enumitem}				
 \selectlanguage{english}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -138,7 +147,7 @@
 \thispagestyle{empty}
 \pagenumbering{arabic}
 %
-%% Abstract gives a brief summary of the main points of a paper:
+%% Abstrt gives a brief summary of the main points of a paper:
 \begin{abstract}
 Making its gaming debut in 1996 with "Pokémon Red and Green" and earning approximately 368 million from game sales alone, the Pokémon series stands as one of Nintendo's oldest and most well-known franchises. With a unique blend of character designs and turn-based role-playing, the game introduced an entire generation to a distinctive gaming style, earning its place as the seventh most successful game of all time. Consequently, the franchise's current cultural significance comes as no surprise.
 
@@ -154,39 +163,49 @@ The community's embrace of "Fakémons," or self-made Pokémon, has reached a poi
 \label{sec:introduction}
 
 \begin{itemize}
-	\item provide overview of the importance and possible applications of the 3D object detection (possibly extending the ones names by \cite{Wang2023})
+	\item provide overview of the importance and possible applications of the 3D object detection (possibly extending the ones names by )
 	\item describe the motivation for using machine learning in 3D object detection
-	\item motivate why we want to reproduce the findings from \cite{Wang2023}
+	\item motivate why we want to reproduce the findings from 
 	\item outline the structure of the paper
 \end{itemize}
 %
 %
 \section{Related Work}
 \label{sec:relwork}
+Generating Pokémon using deep learning is not a novel idea. \cite{Kleiber2020} used a \ac{GAN} to create new Pokémon based on a dataset of ~800 data samples. The presented results seen in Figure \ref{fig:kleiberresults} can definitely be approved upon.\\
+ 
 
-\begin{itemize}
-	\item explain findings by \cite{Wang2023} further and the other papers named in the study and the current state of the art models
-\end{itemize}
-%
+ \begin{figure}[h]
+	\centering
+	\includegraphics[width=1\linewidth]{src/Images/Kleiber_results}
+	\caption[Results of \cite{Kleiber2020}]{Results of \cite{Kleiber2020}. The object somewhat resemble the colour scheme and form of a Pokémons. However, no image is recognizable as a complete design.}
+	\label{fig:kleiberresults}
+\end{figure}
+
+Using the same dataset \cite{Chambel2022} trained a \ac{DCGAN} and achieved better results. The colour of the generated images is much closer to the often vibrant colour presented in the dataset. The results can be seen in Figure \ref{fig:chambelresults}.
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=1\linewidth]{src/Images/Chambel_results}
+	\caption[Results presented by \cite{Chambel2022}]{Results presented by \cite{Chambel2022}.}
+	\label{fig:chambelresults}
+\end{figure}
+
 
 \section{Background}
 \label{sec:background}
-
-\begin{itemize}
-	\item explain the fundamentals of 3D object detection and the use of machine learning to solve the most common problems 
-\end{itemize}
+\cite{Ho2020} present a new generative deep neural network architecture called the \ac{DDPM}. 
 %
 \section{Data Acquisition and Preprocessing}
 \label{sec:dataAca_and_preprocessing}
 \subsection{Acquisition}
-There is no official Pokémon dataset that provides the extensive sample size typically required for training generative deep learning models (TODO: find source for generative models needing a large dataset). Most of the available datasets offer only one image per Pokémon, resulting in approximately 1000 images in total. In comparison, the cifar10 dataset (TODO: add href to cifar10) consists of 60,000 samples. Complicating matters, each Pokémon boasts a unique and easily distinguishable design, making it challenging to identify similarities between them. To address this limitation, I opted to create my own Pokémon dataset using web scraping.
+There is no official Pokémon dataset that provides the extensive sample size typically required for training generative deep learning models \citep{Yang2023}. Most of the available datasets offer only one image per Pokémon, resulting in approximately 1000 images in total. In comparison, the \href{https://www.cs.toronto.edu/~kriz/cifar.html}{cifar10} dataset consists of 60,000 samples. Moreover, each Pokémon has a unique and easily distinguishable design, making it challenging to identify similarities between them. To address this limitation, I opted to create my own Pokémon dataset using web scraping.
 
-I used web scraping to extract data from the \href{https://pokemondb.net/}{Pokémon database}, which lists all Pokémon along with various design variations for each. The Python packages \href{https://www.crummy.com/software/BeautifulSoup/bs4/doc/}{BeautifulSoup} and \href{https://requests.readthedocs.io/en/latest/}{requests} packages provide functions to parse the website into HTML and identify relevant tags. The \href{https://pokemondb.net/pokedex/national}{national Pokédex} which provides a list of all current Pokémon organized by Generation \footnote{In the context of Pokémon, a "generation" refers to a specific group or series of Pokémon games released by Nintendo and Game Freak. Each generation introduces a new set of Pokémon species, game mechanics, and often a new region to explore.} represents the start point of the acquisition pipeline.
+I used web scraping to extract data from the \href{https://pokemondb.net/}{Pokémon database}, which lists all Pokémon along with various design variations for each. The Python packages \href{https://www.crummy.com/software/BeautifulSoup/bs4/doc/}{BeautifulSoup} and \href{https://requests.readthedocs.io/en/latest/}{requests} packages provide functions to parse the website into \ac{HTML} and identify relevant tags. The \href{https://pokemondb.net/pokedex/national}{national Pokédex} which provides a list of all current Pokémon organized by Generation \footnote{In the context of Pokémon, a "generation" refers to a specific group or series of Pokémon games released by Nintendo and Game Freak. Each generation introduces a new set of Pokémon species, game mechanics, and often a new region to explore.} represents the start point of the acquisition pipeline.
 
-We collected links for each entry, simplifying the retrieval of all accessible images through a systematic naming convention. The link structure is as follows: "pokemondb.net/identifier/Pokémon." Changing the identifier granted access to two distinct datasets. The "artwork" identifier encompassed both official and alternative artwork, while the "sprites" section stored all in-game renditions of the Pokémon. In total, we obtained 26,896 unique images (22,825 sprites and 4,071 artworks). The term "unique" requires caution, as we intentionally included both male and female versions (even if differing by minor details) and normal and shiny versions (same Pokémon but with different color coding). Additionally, the database provides GIFs depicting the idle animation of the Pokémon. Each frame of these animations were added to the dataset. Event versions, such as differently clothed "pikachu," were retained, while sprites depicting Pokémon from behind were excluded.
+We collected links for each entry, simplifying the retrieval of all accessible images through a systematic naming convention. The link structure is as follows: "pokemondb.net/identifier/Pokémon." Changing the identifier granted access to two distinct datasets. The "artwork" identifier encompassed both official and alternative artwork, while the "sprites" section stored all in-game renditions of the Pokémon. In total, we obtained 26,896 unique images (22,825 sprites and 4,071 artworks). The term "unique" requires caution, as we intentionally included both male and female versions (even if differing by minor details) and normal and shiny versions (same Pokémon but with different color coding). Additionally, the database provides GIFs depicting the idle animation of the Pokémon. Each frame of these animations were added to the dataset. The back view of Pokémon were ignored since the goal was to generate images from the front. 
 
 The code for web scraping the images can be found \href{https://github.com/mhueppe/Diffusion_Models/tree/master/preprocessing}{here}. Figure \ref{fig:variouscharizard} shows an example of artworks and sprites for the Pokémon entry for \href{https://pokemondb.net/pokedex/charizard}{Charizard}.
-
 
 \begin{figure}[h]
 	\centering
@@ -195,6 +214,36 @@ The code for web scraping the images can be found \href{https://github.com/mhuep
 	\label{fig:variouscharizard}
 \end{figure}
 
+Note that the trained model is a conditional diffusion model, thus the samples should be categorized in a logical scheme.  There are multiple approaches on how the samples can be grouped. Typically, Pokémon are grouped based on their typing \footnote{Typing refers to the elemental or thematic category (fire, water, ghost, fairy etc.) that a Pokémon belongs to. Each Pokémon has one or two types, which determine its strengths and weaknesses in battles. There are 18 different types in total, and each type has its own set of interactions with other types.}. However, optimally similar images are grouped together. Pokémon belonging to the same type can differ drastically in regards to their appearance. Therefore, we opted to group samples based on the body from the Pokémon. 
+This resulted in following classes.\\
+
+Pokémon with: 
+
+\begin{multicols}{3}
+	\begin{enumerate}[itemsep=2pt,parsep=2pt]
+		\item only a head
+		\item a head and legs
+		\item fins
+		\item insectoid body
+		\item quadruped body
+		\item single pair of wings
+		\item multiple bodies
+		\item tentacles
+		\item base and legs
+		\item bipedal with tail
+		\item bipedal without tail
+		\item two or more pairs of wings
+		\item serpentine body
+		\item a head and arms
+	\end{enumerate}
+\end{multicols}
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=\linewidth]{src/Images/bodyCategorys}
+	\caption[Body Categories]{Different body types used to categorise the Pokémon.}
+	\label{fig:bodycategorys}
+\end{figure}
 
 \subsection{Preprocessing}
 The next problem we encountered was the difference in their background, their image mode and
@@ -219,38 +268,42 @@ An example for a sample before and after applying the uniform process can be see
 %
 \section{Model}
 \label{sec:model}
+The model employed was based on the \ac{DDPM} presented by \cite{Ho2020}. \cite{Ho2020} presents both an unconditional Model and a conditional one. For generating the images we only employed the conditional architecture. However, the architecture was slightly modified. The most significant change was the implementation of a scale factor which gives the ability to increase/decrease the amount of model parameters. 
 
-\begin{itemize}
-	\item describe the models architecture and our possible changes to it
-	\item briefly describe the other models as well and in how they differ from our model 
-\end{itemize}
-%
 \section{Model training}
 \label{sec:model_training}
 
-\begin{itemize}
-	\item describe the training loop for the model
-\end{itemize}
-%
-\section{Results}
-\label{sec:results}
+\section{Results}\label{sec:results}
+The following describes the results reported on both the \href{https://www.cs.toronto.edu/~kriz/cifar.html}{cifar10} dataset and our own Pokémon dataset. Since the quality of the generated image is somewhat subjective the \ac{MSE} during training is presented as well. 
 
-\begin{itemize}
-	\item describe the results
-	\item showcase of the performance of each models comparing various metrics
-	\item also showing the training comparison
-\end{itemize}
-%
+
+\subsection{CIFAR-10}
+To validate the model pipeline we first trained the model on the \href{https://www.cs.toronto.edu/~kriz/cifar.html}{cifar10} dataset since the model has already reported good results on this data. The CIFAR-10 dataset is a collection of 60,000 32x32 color images in 10 different classes, with 6,000 images per class. Each image belongs to one of the following classes:
+
+\begin{multicols}{3}
+	\begin{enumerate}[itemsep=2pt,parsep=2pt]
+		\item airplane
+		\item car
+		\item bird
+		\item cat
+		\item deer
+		\item dog
+		\item frog 
+		\item horse
+		\item ship
+		\item truck
+	\end{enumerate}
+\end{multicols}
+
+Similarly, our model reported good results as well. 
+
+Figure (TBA) shows the decrease of \ac{MSE} over time. 
+Figure (TBA) shows the predicted images over time. As one can see the images predicted in the early stages of training were not reminiscent of the input data and mostly show either random noise or images containing only one colour. Similar to how the \ac{MSE} decreased over time the quality of the images increased. The final images clearly depict objects of the respected class. 
+
 \section{Discussion}
 \label{sec:discussion}
+Our model showed good results both on the benchmark dataset and our own created dataset. The diffusion model and the increased size of the dataset showed to positively influence the quality of the predicted images. Our images had a more recognizable design than previous studies (see Figure \ref{fig:kleiberresults} \& \ref{fig:chambelresults} ). This was expected since generative models are known to work best with larger datasets \citep{Yang2023}. Additionally, \ac{DDPM}s show to generate higher quality images than simple \ac{GAN}s \citep{Guarnera2023}.
 
-\begin{itemize}
-	\item discuss the findings of the results: 
-	\item Where the results presented by \cite{Wang2023} replicable? 
-	\item In how far did our results differ from the the ones presented \cite{Wang2023}?
-	\item What might be the reason for the differences? 
-\end{itemize}
-%%
 \section{Conclusion}
 \label{sec:conclusion}
 

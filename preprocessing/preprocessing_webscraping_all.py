@@ -7,11 +7,12 @@ import requests
 from threading import Thread
 from bs4 import BeautifulSoup
 import os
+from io import BytesIO
 from preprocessing_uniform_data import uniform, center_focus, resize_and_save
 import io
 import PIL
 from PIL import Image
-
+from pathlib import Path
 
 # gets all the pokemon sites of their list
 def get_pokemon(url: str, identifier: str = "pokedex") -> List[str]:
@@ -70,7 +71,7 @@ def get_soup(url: str) -> BeautifulSoup:
     return BeautifulSoup(r.text, 'html.parser')
 
 
-def download(images: str, save_path: str, n_retries: int = 5):
+def download(images: str, save_path: str, n_retries: int = 5, overwrite=False):
     """
     Download an image, process it and save it
     :param images:
@@ -87,20 +88,46 @@ def download(images: str, save_path: str, n_retries: int = 5):
             continue
 
         path = os.path.join(save_path, name)
-        if '.gif' not in name:
-            for i in range(n_retries):
-                try:
-                    with open(path, 'wb') as f:
-                        im = requests.get(image)
-                        f.write(im.content)
-                except ConnectionError:
-                    print("Reconnecting")
-            try:
-                # make all the images uniform
-                uniform(path, 64, 64)
-            except PermissionError:
-                print(f"{path} gave permission error")
+        if not overwrite:
+            if os.path.exists(path):
+                continue
 
+        for i in range(n_retries):
+            try:
+                with open(path, 'wb') as f:
+                    im = requests.get(image)
+                    if ".gif" in path:
+                        gif = Image.open(BytesIO(im.content))
+                        for frame in range(gif.n_frames):
+                            gif.seek(frame)
+                            frame_img = gif.convert("RGBA")
+                            frame_img.save(path.replace(Path(path).suffix, f"_{frame}.png"), "PNG")
+                    else:
+                        f.write(im.content)
+                    break
+            except (ConnectionError, requests.exceptions.MissingSchema):
+                print("Reconnecting")
+
+def make_white(img, b=0, g=0, r=0):
+    pixel_data = img.getdata()
+    new_data = []
+
+    # check for every pixel if it is either complete black, red, green, blue
+    # (the three backgrounds that occurred in the dataset)
+    for item in pixel_data:
+        if item[0] == r and item[1] == g and item[2] == b:  # black
+            new_data.append((255, 255, 255))  # append a white pixel instead
+        elif item[0] != r and item[1] == g and item[2] == b:  # red
+            new_data.append((255, 255, 255))
+        elif item[0] == r and item[1] != g and item[2] == b:  # green
+            new_data.append((255, 255, 255))
+        elif item[0] == r and item[1] == g and item[2] != b:  # blue
+            new_data.append((255, 255, 255))
+        else:
+            new_data.append(item)  # if it is none of the one keep the pixel as it is
+
+    img.putdata(new_data)  # encode the pixel data with the swapped pixels as an image
+    return img
 
 def imagedown(url, folder):
     if not os.path.exists(folder):
@@ -149,7 +176,7 @@ def load_pokemons(pokemons: list, shared_count: Value, total: int = 903):
     :return:
     """
     print(f"Start loading pokemon: {pokemons}")
-    pokemons_devided = distribute(pokemons, 5)
+    pokemons_devided = distribute(pokemons, 6)
     loadingThreads = []
     # Define a shared integer variable
     for group in pokemons_devided:

@@ -63,11 +63,22 @@ class Diffusion:
         return x
 
 
+def get_model_size(model):
+    total_params = 0
+    for param in model.parameters():
+        total_params += param.numel()
+
+    total_size = total_params  # Size in megabytes (assuming 4 bytes per float)
+    return total_size
+
+
 def train(args):
     setup_logging(args.run_name)
     device = args.device
     dataloader = get_data(args)
-    model = UNet_conditional(num_classes=args.num_classes).to(device)
+    model = UNet_conditional(num_classes=args.num_classes,
+                             image_size=args.image_size,
+                             scalingFactor=args.model_size).to(device)
     optimizer = optim.AdamW(model.parameters(), lr=args.lr)
     mse = nn.MSELoss()
     diffusion = Diffusion(img_size=args.image_size, device=device)
@@ -75,7 +86,7 @@ def train(args):
     l = len(dataloader)
     ema = EMA(0.995)
     ema_model = copy.deepcopy(model).eval().requires_grad_(False)
-
+    print(get_model_size(model))
     for epoch in range(args.epochs):
         logging.info(f"Starting epoch {epoch}:")
         pbar = tqdm(dataloader)
@@ -97,30 +108,30 @@ def train(args):
             pbar.set_postfix(MSE=loss.item())
             logger.add_scalar("MSE", loss.item(), global_step=epoch * l + i)
 
-        if epoch % 10 == 0:
-            labels = torch.arange(10).long().to(device)
-            sampled_images = diffusion.sample(model, n=len(labels), labels=labels)
-            ema_sampled_images = diffusion.sample(ema_model, n=len(labels), labels=labels)
-            plot_images(sampled_images)
-            save_images(sampled_images, os.path.join("results", args.run_name, f"{epoch}.jpg"))
-            save_images(ema_sampled_images, os.path.join("results", args.run_name, f"{epoch}_ema.jpg"))
-            torch.save(model.state_dict(), os.path.join("models", args.run_name, f"ckpt.pt"))
-            torch.save(ema_model.state_dict(), os.path.join("models", args.run_name, f"ema_ckpt.pt"))
-            torch.save(optimizer.state_dict(), os.path.join("models", args.run_name, f"optim.pt"))
+        labels = torch.arange(args.num_classes).long().to(device)
+        sampled_images = diffusion.sample(model, n=len(labels), labels=labels)
+        ema_sampled_images = diffusion.sample(ema_model, n=len(labels), labels=labels)
+        # plot_images(sampled_images)
+        save_images(sampled_images, os.path.join("results", args.run_name, f"{epoch}.jpg"))
+        save_images(ema_sampled_images, os.path.join("results", args.run_name, f"{epoch}_ema.jpg"))
+        torch.save(model.state_dict(), os.path.join("models", args.run_name, f"ckpt.pt"))
+        torch.save(ema_model.state_dict(), os.path.join("models", args.run_name, f"ema_ckpt.pt"))
+        torch.save(optimizer.state_dict(), os.path.join("models", args.run_name, f"optim.pt"))
 
 
 def launch():
     import argparse
     parser = argparse.ArgumentParser()
     args = parser.parse_args()
-    args.run_name = "DDPM_conditional"
+    args.run_name = "DDPM_conditional_cifar10_32"
     args.epochs = 300
-    args.batch_size = 2
-    args.image_size = 64
+    args.batch_size = 32
+    args.image_size = 32
     args.num_classes = 10
-    args.dataset_path = r"C:\Users\mhueppe.LAPTOP-PKNG4OSF\MasterInformatik\Semester_1\ImageDiffusion\data\cifar10-64\train"
+    args.dataset_path = fr"C:\Users\mhueppe.LAPTOP-PKNG4OSF\MasterInformatik\Semester_1\ImageDiffusion\data\cifar10-32\train"
     args.device = "cuda"
     args.lr = 3e-4
+    args.model_size = 1
     train(args)
 
 
