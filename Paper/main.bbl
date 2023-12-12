@@ -1,0 +1,733 @@
+% $ biblatex auxiliary file $
+% $ biblatex bbl format version 3.2 $
+% Do not modify the above lines!
+%
+% This is an auxiliary file used by the 'biblatex' package.
+% This file may safely be deleted. It will be recreated by
+% biber as required.
+%
+\begingroup
+\makeatletter
+\@ifundefined{ver@biblatex.sty}
+  {\@latex@error
+     {Missing 'biblatex' package}
+     {The bibliography requires the 'biblatex' package.}
+      \aftergroup\endinput}
+  {}
+\endgroup
+
+
+\refsection{0}
+  \datalist[entry]{apa/apasortcite//global/global}
+    \entry{Armeni2016}{article}{}
+      \name{author}{7}{}{%
+        {{un=0,uniquepart=base,hash=60c30c11033d50a7830227e21d7de619}{%
+           family={Armeni},
+           familyi={A\bibinitperiod},
+           given={Iro},
+           giveni={I\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=549735d3e9dd65c976e6eb0a084fe121}{%
+           family={Sener},
+           familyi={S\bibinitperiod},
+           given={Ozan},
+           giveni={O\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=5c4d5bffbf12972d7fa07562ce912187}{%
+           family={Zamir},
+           familyi={Z\bibinitperiod},
+           given={Amir\bibnamedelima R.},
+           giveni={A\bibinitperiod\bibinitdelim R\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=b5e9fa15b5437c87ad1a5c4cca276128}{%
+           family={Jiang},
+           familyi={J\bibinitperiod},
+           given={Helen},
+           giveni={H\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=51c5ba77188f9fdd2b0d2bc1be9bfcfb}{%
+           family={Brilakis},
+           familyi={B\bibinitperiod},
+           given={Ioannis},
+           giveni={I\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=bedef3752e42cc8501a95a23af0db2f8}{%
+           family={Fischer},
+           familyi={F\bibinitperiod},
+           given={Martin},
+           giveni={M\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=e29c20003a517abaaac28852301c03c2}{%
+           family={Savarese},
+           familyi={S\bibinitperiod},
+           given={Silvio},
+           giveni={S\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{de3c515bc48296129d43d2159e554292}
+      \strng{fullhash}{5ea5541420b78306911f79f1e6b175ea}
+      \strng{bibnamehash}{5ea5541420b78306911f79f1e6b175ea}
+      \strng{authorbibnamehash}{5ea5541420b78306911f79f1e6b175ea}
+      \strng{authornamehash}{de3c515bc48296129d43d2159e554292}
+      \strng{authorfullhash}{5ea5541420b78306911f79f1e6b175ea}
+      \field{sortinit}{A}
+      \field{sortinithash}{2f401846e2029bad6b3ecc16d50031e2}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition (CVPR)}
+      \field{month}{6}
+      \field{title}{3D Semantic Parsing of Large-Scale Indoor Spaces}
+      \field{year}{2016}
+    \endentry
+    \entry{Caesar2020}{article}{}
+      \name{author}{10}{}{%
+        {{un=0,uniquepart=base,hash=d2047c4d49ddd538f9c22a99dc18fa3c}{%
+           family={Caesar},
+           familyi={C\bibinitperiod},
+           given={Holger},
+           giveni={H\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=6d2898a2a942f70dba274e4ca01c309a}{%
+           family={Bankiti},
+           familyi={B\bibinitperiod},
+           given={Varun},
+           giveni={V\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=e9927725a3483dbe3fe8289056f46494}{%
+           family={Lang},
+           familyi={L\bibinitperiod},
+           given={Alex\bibnamedelima H},
+           giveni={A\bibinitperiod\bibinitdelim H\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=9c0abc10b8b8b47d7540b19fe4802ff4}{%
+           family={Vora},
+           familyi={V\bibinitperiod},
+           given={Sourabh},
+           giveni={S\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=2bbb3979ebf91b42242a0c58ec57d311}{%
+           family={Liong},
+           familyi={L\bibinitperiod},
+           given={Venice\bibnamedelima Erin},
+           giveni={V\bibinitperiod\bibinitdelim E\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=6cacd034725d0431a7b1f3fd4a060c02}{%
+           family={Xu},
+           familyi={X\bibinitperiod},
+           given={Qiang},
+           giveni={Q\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=5f853094b70c00b55c9bfd73dc41d683}{%
+           family={Krishnan},
+           familyi={K\bibinitperiod},
+           given={Anush},
+           giveni={A\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=d627c895a7726afc8a55a9fa241c4b19}{%
+           family={Pan},
+           familyi={P\bibinitperiod},
+           given={Yu},
+           giveni={Y\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=4dab25d83f7aedebf88253fb9d8e2c64}{%
+           family={Baldan},
+           familyi={B\bibinitperiod},
+           given={Giancarlo},
+           giveni={G\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=0c3325985f73ff54cb6bd5443fd77c0e}{%
+           family={Beijbom},
+           familyi={B\bibinitperiod},
+           given={Oscar},
+           giveni={O\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{2c328f527cb71bd917b1f85566566eee}
+      \strng{fullhash}{91d902a41838b390ef9c26ffe8ec7e74}
+      \strng{bibnamehash}{91d902a41838b390ef9c26ffe8ec7e74}
+      \strng{authorbibnamehash}{91d902a41838b390ef9c26ffe8ec7e74}
+      \strng{authornamehash}{2c328f527cb71bd917b1f85566566eee}
+      \strng{authorfullhash}{91d902a41838b390ef9c26ffe8ec7e74}
+      \field{sortinit}{C}
+      \field{sortinithash}{4d103a86280481745c9c897c925753c0}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Proceedings of the IEEE/CVF conference on computer vision and pattern recognition}
+      \field{title}{nuscenes: A multimodal dataset for autonomous driving}
+      \field{year}{2020}
+      \field{pages}{11621\bibrangedash 11631}
+      \range{pages}{11}
+    \endentry
+    \entry{Dai2017}{misc}{}
+      \name{author}{6}{}{%
+        {{un=0,uniquepart=base,hash=964283da01a9c1039ae067c7e4454635}{%
+           family={Dai},
+           familyi={D\bibinitperiod},
+           given={Angela},
+           giveni={A\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=bf99ab76416eda8e5726a0557ac92583}{%
+           family={Chang},
+           familyi={C\bibinitperiod},
+           given={Angel\bibnamedelima X.},
+           giveni={A\bibinitperiod\bibinitdelim X\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=bad0a30ec9610ab126c95e2785c806c4}{%
+           family={Savva},
+           familyi={S\bibinitperiod},
+           given={Manolis},
+           giveni={M\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=735aac7573d229d468eb35ce6e1c5e67}{%
+           family={Halber},
+           familyi={H\bibinitperiod},
+           given={Maciej},
+           giveni={M\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=d5f84e30e5cf00a362dfcbcca460dd64}{%
+           family={Funkhouser},
+           familyi={F\bibinitperiod},
+           given={Thomas},
+           giveni={T\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=3e07f51dbc36ece3b41bb5bcfe5b3b07}{%
+           family={Nießner},
+           familyi={N\bibinitperiod},
+           given={Matthias},
+           giveni={M\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{5e0ec9fdf3a06d11248cffd371935aff}
+      \strng{fullhash}{8b573147aaab01a2eacecba2e3324a61}
+      \strng{bibnamehash}{8b573147aaab01a2eacecba2e3324a61}
+      \strng{authorbibnamehash}{8b573147aaab01a2eacecba2e3324a61}
+      \strng{authornamehash}{5e0ec9fdf3a06d11248cffd371935aff}
+      \strng{authorfullhash}{8b573147aaab01a2eacecba2e3324a61}
+      \field{sortinit}{D}
+      \field{sortinithash}{6f385f66841fb5e82009dc833c761848}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{eprintclass}{cs.CV}
+      \field{eprinttype}{arXiv}
+      \field{title}{ScanNet: Richly-annotated 3D Reconstructions of Indoor Scenes}
+      \field{year}{2017}
+      \verb{eprint}
+      \verb 1702.04405
+      \endverb
+    \endentry
+    \entry{Geiger2013}{article}{}
+      \name{author}{4}{}{%
+        {{un=0,uniquepart=base,hash=06133052ac3c14a188601b82783cd4f7}{%
+           family={Geiger},
+           familyi={G\bibinitperiod},
+           given={Andreas},
+           giveni={A\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=f594289a77a4b801a7156edc29235ad8}{%
+           family={Lenz},
+           familyi={L\bibinitperiod},
+           given={Philip},
+           giveni={P\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=ca1de2d211c8e4a0f976b3b90a625cb8}{%
+           family={Stiller},
+           familyi={S\bibinitperiod},
+           given={Christoph},
+           giveni={C\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=bc58c1e920023b071a4d0695299cf804}{%
+           family={Urtasun},
+           familyi={U\bibinitperiod},
+           given={Raquel},
+           giveni={R\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{publisher}{1}{%
+        {Sage Publications Sage UK: London, England}%
+      }
+      \strng{namehash}{0ed1132e2b009ef637750997288e3249}
+      \strng{fullhash}{5a983328f9e192b0dde84b863e9f7f4e}
+      \strng{bibnamehash}{5a983328f9e192b0dde84b863e9f7f4e}
+      \strng{authorbibnamehash}{5a983328f9e192b0dde84b863e9f7f4e}
+      \strng{authornamehash}{0ed1132e2b009ef637750997288e3249}
+      \strng{authorfullhash}{5a983328f9e192b0dde84b863e9f7f4e}
+      \field{sortinit}{G}
+      \field{sortinithash}{32d67eca0634bf53703493fb1090a2e8}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{The International Journal of Robotics Research}
+      \field{number}{11}
+      \field{title}{Vision meets robotics: The kitti dataset}
+      \field{volume}{32}
+      \field{year}{2013}
+      \field{pages}{1231\bibrangedash 1237}
+      \range{pages}{7}
+    \endentry
+    \entry{Song2015}{article}{}
+      \name{author}{3}{}{%
+        {{un=0,uniquepart=base,hash=5abaf8ffacdb02cbfe12fca8f3d327cb}{%
+           family={Song},
+           familyi={S\bibinitperiod},
+           given={Shuran},
+           giveni={S\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=71f7667e4df5fdf3ab2ba70fa3db5300}{%
+           family={Lichtenberg},
+           familyi={L\bibinitperiod},
+           given={Samuel\bibnamedelima P.},
+           giveni={S\bibinitperiod\bibinitdelim P\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=2bbe6a54045fb885f5d23a8bdd1ebb0d}{%
+           family={Xiao},
+           familyi={X\bibinitperiod},
+           given={Jianxiong},
+           giveni={J\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{a0fcc5b50f962498e61887cf28eb9f01}
+      \strng{fullhash}{45bb85dfcd24fea489d15acb8887e21e}
+      \strng{bibnamehash}{45bb85dfcd24fea489d15acb8887e21e}
+      \strng{authorbibnamehash}{45bb85dfcd24fea489d15acb8887e21e}
+      \strng{authornamehash}{a0fcc5b50f962498e61887cf28eb9f01}
+      \strng{authorfullhash}{45bb85dfcd24fea489d15acb8887e21e}
+      \field{sortinit}{S}
+      \field{sortinithash}{b164b07b29984b41daf1e85279fbc5ab}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{2015 IEEE Conference on Computer Vision and Pattern Recognition (CVPR)}
+      \field{title}{SUN RGB-D: A RGB-D scene understanding benchmark suite}
+      \field{year}{2015}
+      \field{pages}{567\bibrangedash 576}
+      \range{pages}{10}
+      \verb{doi}
+      \verb 10.1109/CVPR.2015.7298655
+      \endverb
+    \endentry
+    \entry{Wang2023}{misc}{}
+      \name{author}{5}{}{%
+        {{un=0,uniquepart=base,hash=63ea41498c9400a3d16d0249bafa4bfa}{%
+           family={Wang},
+           familyi={W\bibinitperiod},
+           given={Zhenyu},
+           giveni={Z\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=95f1a26a96227bb4e2c0accb49469e2f}{%
+           family={Li},
+           familyi={L\bibinitperiod},
+           given={Yali},
+           giveni={Y\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=c6649d02b24225ca4c9012cee6c790de}{%
+           family={Chen},
+           familyi={C\bibinitperiod},
+           given={Xi},
+           giveni={X\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=b2c00b2ccbbe98f22709d2cb8ccc0bba}{%
+           family={Zhao},
+           familyi={Z\bibinitperiod},
+           given={Hengshuang},
+           giveni={H\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=ee9eef9295a174fc1778569bd56008f9}{%
+           family={Wang},
+           familyi={W\bibinitperiod},
+           given={Shengjin},
+           giveni={S\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{4182a93aa0db5df9dea08e8660d35262}
+      \strng{fullhash}{6df0d1d052705995b2f07b648d5c28c0}
+      \strng{bibnamehash}{6df0d1d052705995b2f07b648d5c28c0}
+      \strng{authorbibnamehash}{6df0d1d052705995b2f07b648d5c28c0}
+      \strng{authornamehash}{4182a93aa0db5df9dea08e8660d35262}
+      \strng{authorfullhash}{6df0d1d052705995b2f07b648d5c28c0}
+      \field{sortinit}{W}
+      \field{sortinithash}{4315d78024d0cea9b57a0c6f0e35ed0d}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{eprintclass}{cs.CV}
+      \field{eprinttype}{arXiv}
+      \field{title}{Uni3DETR: Unified 3D Detection Transformer}
+      \field{year}{2023}
+      \verb{eprint}
+      \verb 2310.05699
+      \endverb
+    \endentry
+  \enddatalist
+  \datalist[entry]{apa/global//global/global}
+    \entry{Armeni2016}{article}{}
+      \name{author}{7}{}{%
+        {{un=0,uniquepart=base,hash=60c30c11033d50a7830227e21d7de619}{%
+           family={Armeni},
+           familyi={A\bibinitperiod},
+           given={Iro},
+           giveni={I\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=549735d3e9dd65c976e6eb0a084fe121}{%
+           family={Sener},
+           familyi={S\bibinitperiod},
+           given={Ozan},
+           giveni={O\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=5c4d5bffbf12972d7fa07562ce912187}{%
+           family={Zamir},
+           familyi={Z\bibinitperiod},
+           given={Amir\bibnamedelima R.},
+           giveni={A\bibinitperiod\bibinitdelim R\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=b5e9fa15b5437c87ad1a5c4cca276128}{%
+           family={Jiang},
+           familyi={J\bibinitperiod},
+           given={Helen},
+           giveni={H\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=51c5ba77188f9fdd2b0d2bc1be9bfcfb}{%
+           family={Brilakis},
+           familyi={B\bibinitperiod},
+           given={Ioannis},
+           giveni={I\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=bedef3752e42cc8501a95a23af0db2f8}{%
+           family={Fischer},
+           familyi={F\bibinitperiod},
+           given={Martin},
+           giveni={M\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=e29c20003a517abaaac28852301c03c2}{%
+           family={Savarese},
+           familyi={S\bibinitperiod},
+           given={Silvio},
+           giveni={S\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{de3c515bc48296129d43d2159e554292}
+      \strng{fullhash}{5ea5541420b78306911f79f1e6b175ea}
+      \strng{bibnamehash}{5ea5541420b78306911f79f1e6b175ea}
+      \strng{authorbibnamehash}{5ea5541420b78306911f79f1e6b175ea}
+      \strng{authornamehash}{de3c515bc48296129d43d2159e554292}
+      \strng{authorfullhash}{5ea5541420b78306911f79f1e6b175ea}
+      \field{sortinit}{A}
+      \field{sortinithash}{2f401846e2029bad6b3ecc16d50031e2}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition (CVPR)}
+      \field{month}{6}
+      \field{title}{3D Semantic Parsing of Large-Scale Indoor Spaces}
+      \field{year}{2016}
+    \endentry
+    \entry{Caesar2020}{article}{}
+      \name{author}{10}{}{%
+        {{un=0,uniquepart=base,hash=d2047c4d49ddd538f9c22a99dc18fa3c}{%
+           family={Caesar},
+           familyi={C\bibinitperiod},
+           given={Holger},
+           giveni={H\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=6d2898a2a942f70dba274e4ca01c309a}{%
+           family={Bankiti},
+           familyi={B\bibinitperiod},
+           given={Varun},
+           giveni={V\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=e9927725a3483dbe3fe8289056f46494}{%
+           family={Lang},
+           familyi={L\bibinitperiod},
+           given={Alex\bibnamedelima H},
+           giveni={A\bibinitperiod\bibinitdelim H\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=9c0abc10b8b8b47d7540b19fe4802ff4}{%
+           family={Vora},
+           familyi={V\bibinitperiod},
+           given={Sourabh},
+           giveni={S\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=2bbb3979ebf91b42242a0c58ec57d311}{%
+           family={Liong},
+           familyi={L\bibinitperiod},
+           given={Venice\bibnamedelima Erin},
+           giveni={V\bibinitperiod\bibinitdelim E\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=6cacd034725d0431a7b1f3fd4a060c02}{%
+           family={Xu},
+           familyi={X\bibinitperiod},
+           given={Qiang},
+           giveni={Q\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=5f853094b70c00b55c9bfd73dc41d683}{%
+           family={Krishnan},
+           familyi={K\bibinitperiod},
+           given={Anush},
+           giveni={A\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=d627c895a7726afc8a55a9fa241c4b19}{%
+           family={Pan},
+           familyi={P\bibinitperiod},
+           given={Yu},
+           giveni={Y\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=4dab25d83f7aedebf88253fb9d8e2c64}{%
+           family={Baldan},
+           familyi={B\bibinitperiod},
+           given={Giancarlo},
+           giveni={G\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=0c3325985f73ff54cb6bd5443fd77c0e}{%
+           family={Beijbom},
+           familyi={B\bibinitperiod},
+           given={Oscar},
+           giveni={O\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{2c328f527cb71bd917b1f85566566eee}
+      \strng{fullhash}{91d902a41838b390ef9c26ffe8ec7e74}
+      \strng{bibnamehash}{91d902a41838b390ef9c26ffe8ec7e74}
+      \strng{authorbibnamehash}{91d902a41838b390ef9c26ffe8ec7e74}
+      \strng{authornamehash}{2c328f527cb71bd917b1f85566566eee}
+      \strng{authorfullhash}{91d902a41838b390ef9c26ffe8ec7e74}
+      \field{sortinit}{C}
+      \field{sortinithash}{4d103a86280481745c9c897c925753c0}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Proceedings of the IEEE/CVF conference on computer vision and pattern recognition}
+      \field{title}{nuscenes: A multimodal dataset for autonomous driving}
+      \field{year}{2020}
+      \field{pages}{11621\bibrangedash 11631}
+      \range{pages}{11}
+    \endentry
+    \entry{Dai2017}{misc}{}
+      \name{author}{6}{}{%
+        {{un=0,uniquepart=base,hash=964283da01a9c1039ae067c7e4454635}{%
+           family={Dai},
+           familyi={D\bibinitperiod},
+           given={Angela},
+           giveni={A\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=bf99ab76416eda8e5726a0557ac92583}{%
+           family={Chang},
+           familyi={C\bibinitperiod},
+           given={Angel\bibnamedelima X.},
+           giveni={A\bibinitperiod\bibinitdelim X\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=bad0a30ec9610ab126c95e2785c806c4}{%
+           family={Savva},
+           familyi={S\bibinitperiod},
+           given={Manolis},
+           giveni={M\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=735aac7573d229d468eb35ce6e1c5e67}{%
+           family={Halber},
+           familyi={H\bibinitperiod},
+           given={Maciej},
+           giveni={M\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=d5f84e30e5cf00a362dfcbcca460dd64}{%
+           family={Funkhouser},
+           familyi={F\bibinitperiod},
+           given={Thomas},
+           giveni={T\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=3e07f51dbc36ece3b41bb5bcfe5b3b07}{%
+           family={Nießner},
+           familyi={N\bibinitperiod},
+           given={Matthias},
+           giveni={M\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{5e0ec9fdf3a06d11248cffd371935aff}
+      \strng{fullhash}{8b573147aaab01a2eacecba2e3324a61}
+      \strng{bibnamehash}{8b573147aaab01a2eacecba2e3324a61}
+      \strng{authorbibnamehash}{8b573147aaab01a2eacecba2e3324a61}
+      \strng{authornamehash}{5e0ec9fdf3a06d11248cffd371935aff}
+      \strng{authorfullhash}{8b573147aaab01a2eacecba2e3324a61}
+      \field{sortinit}{D}
+      \field{sortinithash}{6f385f66841fb5e82009dc833c761848}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{eprintclass}{cs.CV}
+      \field{eprinttype}{arXiv}
+      \field{title}{ScanNet: Richly-annotated 3D Reconstructions of Indoor Scenes}
+      \field{year}{2017}
+      \verb{eprint}
+      \verb 1702.04405
+      \endverb
+    \endentry
+    \entry{Geiger2013}{article}{}
+      \name{author}{4}{}{%
+        {{un=0,uniquepart=base,hash=06133052ac3c14a188601b82783cd4f7}{%
+           family={Geiger},
+           familyi={G\bibinitperiod},
+           given={Andreas},
+           giveni={A\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=f594289a77a4b801a7156edc29235ad8}{%
+           family={Lenz},
+           familyi={L\bibinitperiod},
+           given={Philip},
+           giveni={P\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=ca1de2d211c8e4a0f976b3b90a625cb8}{%
+           family={Stiller},
+           familyi={S\bibinitperiod},
+           given={Christoph},
+           giveni={C\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=bc58c1e920023b071a4d0695299cf804}{%
+           family={Urtasun},
+           familyi={U\bibinitperiod},
+           given={Raquel},
+           giveni={R\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{publisher}{1}{%
+        {Sage Publications Sage UK: London, England}%
+      }
+      \strng{namehash}{0ed1132e2b009ef637750997288e3249}
+      \strng{fullhash}{5a983328f9e192b0dde84b863e9f7f4e}
+      \strng{bibnamehash}{5a983328f9e192b0dde84b863e9f7f4e}
+      \strng{authorbibnamehash}{5a983328f9e192b0dde84b863e9f7f4e}
+      \strng{authornamehash}{0ed1132e2b009ef637750997288e3249}
+      \strng{authorfullhash}{5a983328f9e192b0dde84b863e9f7f4e}
+      \field{sortinit}{G}
+      \field{sortinithash}{32d67eca0634bf53703493fb1090a2e8}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{The International Journal of Robotics Research}
+      \field{number}{11}
+      \field{title}{Vision meets robotics: The kitti dataset}
+      \field{volume}{32}
+      \field{year}{2013}
+      \field{pages}{1231\bibrangedash 1237}
+      \range{pages}{7}
+    \endentry
+    \entry{Song2015}{article}{}
+      \name{author}{3}{}{%
+        {{un=0,uniquepart=base,hash=5abaf8ffacdb02cbfe12fca8f3d327cb}{%
+           family={Song},
+           familyi={S\bibinitperiod},
+           given={Shuran},
+           giveni={S\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=71f7667e4df5fdf3ab2ba70fa3db5300}{%
+           family={Lichtenberg},
+           familyi={L\bibinitperiod},
+           given={Samuel\bibnamedelima P.},
+           giveni={S\bibinitperiod\bibinitdelim P\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=2bbe6a54045fb885f5d23a8bdd1ebb0d}{%
+           family={Xiao},
+           familyi={X\bibinitperiod},
+           given={Jianxiong},
+           giveni={J\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{a0fcc5b50f962498e61887cf28eb9f01}
+      \strng{fullhash}{45bb85dfcd24fea489d15acb8887e21e}
+      \strng{bibnamehash}{45bb85dfcd24fea489d15acb8887e21e}
+      \strng{authorbibnamehash}{45bb85dfcd24fea489d15acb8887e21e}
+      \strng{authornamehash}{a0fcc5b50f962498e61887cf28eb9f01}
+      \strng{authorfullhash}{45bb85dfcd24fea489d15acb8887e21e}
+      \field{sortinit}{S}
+      \field{sortinithash}{b164b07b29984b41daf1e85279fbc5ab}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{2015 IEEE Conference on Computer Vision and Pattern Recognition (CVPR)}
+      \field{title}{SUN RGB-D: A RGB-D scene understanding benchmark suite}
+      \field{year}{2015}
+      \field{pages}{567\bibrangedash 576}
+      \range{pages}{10}
+      \verb{doi}
+      \verb 10.1109/CVPR.2015.7298655
+      \endverb
+    \endentry
+    \entry{Wang2023}{misc}{}
+      \name{author}{5}{}{%
+        {{un=0,uniquepart=base,hash=63ea41498c9400a3d16d0249bafa4bfa}{%
+           family={Wang},
+           familyi={W\bibinitperiod},
+           given={Zhenyu},
+           giveni={Z\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=95f1a26a96227bb4e2c0accb49469e2f}{%
+           family={Li},
+           familyi={L\bibinitperiod},
+           given={Yali},
+           giveni={Y\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=c6649d02b24225ca4c9012cee6c790de}{%
+           family={Chen},
+           familyi={C\bibinitperiod},
+           given={Xi},
+           giveni={X\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=b2c00b2ccbbe98f22709d2cb8ccc0bba}{%
+           family={Zhao},
+           familyi={Z\bibinitperiod},
+           given={Hengshuang},
+           giveni={H\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=ee9eef9295a174fc1778569bd56008f9}{%
+           family={Wang},
+           familyi={W\bibinitperiod},
+           given={Shengjin},
+           giveni={S\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{4182a93aa0db5df9dea08e8660d35262}
+      \strng{fullhash}{6df0d1d052705995b2f07b648d5c28c0}
+      \strng{bibnamehash}{6df0d1d052705995b2f07b648d5c28c0}
+      \strng{authorbibnamehash}{6df0d1d052705995b2f07b648d5c28c0}
+      \strng{authornamehash}{4182a93aa0db5df9dea08e8660d35262}
+      \strng{authorfullhash}{6df0d1d052705995b2f07b648d5c28c0}
+      \field{sortinit}{W}
+      \field{sortinithash}{4315d78024d0cea9b57a0c6f0e35ed0d}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{eprintclass}{cs.CV}
+      \field{eprinttype}{arXiv}
+      \field{title}{Uni3DETR: Unified 3D Detection Transformer}
+      \field{year}{2023}
+      \verb{eprint}
+      \verb 2310.05699
+      \endverb
+    \endentry
+  \enddatalist
+\endrefsection
+\endinput
+

@@ -1,0 +1,10 @@
+@Misc{Wang2023,
+  author        = {Zhenyu Wang and Yali Li and Xi Chen and Hengshuang Zhao and Shengjin Wang},
+  title         = {Uni3DETR: Unified 3D Detection Transformer},
+  year          = {2023},
+  archiveprefix = {arXiv},
+  eprint        = {2310.05699},
+  primaryclass  = {cs.CV},
+}
+
+@Comment{jabref-meta: databaseType:bibtex;}
