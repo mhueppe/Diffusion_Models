@@ -109,8 +109,8 @@ def train(args):
             logger.add_scalar("MSE", loss.item(), global_step=epoch * l + i)
 
         labels = torch.arange(args.num_classes).long().to(device)
-        sampled_images = diffusion.sample(model, n=len(labels), labels=labels)
-        ema_sampled_images = diffusion.sample(ema_model, n=len(labels), labels=labels)
+        sampled_images = sample_images(diffusion, model, args.batch_size, labels)
+        ema_sampled_images = sample_images(diffusion, ema_model, args.batch_size, labels)
         # plot_images(sampled_images)
         save_images(sampled_images, os.path.join("results", args.run_name, f"{epoch}.jpg"))
         save_images(ema_sampled_images, os.path.join("results", args.run_name, f"{epoch}_ema.jpg"))
@@ -118,17 +118,31 @@ def train(args):
         torch.save(ema_model.state_dict(), os.path.join("models", args.run_name, f"ema_ckpt.pt"))
         torch.save(optimizer.state_dict(), os.path.join("models", args.run_name, f"optim.pt"))
 
+def sample_images(diffusion, model, batch_size, labels):
+    if batch_size < len(labels):
+        sampled_images = None
+        for i in range(0, len(labels), batch_size):
+            if i + batch_size > len(labels):
+                continue
+            images = diffusion.sample(model, n=batch_size, labels=labels[i:i + batch_size])
+            if sampled_images is not None:
+                sampled_images = torch.cat((sampled_images, images), dim=0)
+            else:
+                sampled_images = images
+    else:
+        sampled_images = diffusion.sample(model, n=len(labels), labels=labels)
 
+    return sampled_images
 def launch():
     import argparse
     parser = argparse.ArgumentParser()
     args = parser.parse_args()
-    args.run_name = "DDPM_conditional_cifar10_32"
+    args.run_name = "DDPM_conditional_pokémon"
     args.epochs = 300
-    args.batch_size = 32
-    args.image_size = 32
-    args.num_classes = 10
-    args.dataset_path = fr"C:\Users\mhueppe.LAPTOP-PKNG4OSF\MasterInformatik\Semester_1\ImageDiffusion\data\cifar10-32\train"
+    args.batch_size = 2
+    args.image_size = 64
+    args.num_classes = 14
+    args.dataset_path = fr"C:\Users\mhueppe.LAPTOP-PKNG4OSF\MasterInformatik\Semester_1\ImageDiffusion\data\raw_copy"
     args.device = "cuda"
     args.lr = 3e-4
     args.model_size = 1

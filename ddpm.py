@@ -95,11 +95,11 @@ def launch():
     import argparse
     parser = argparse.ArgumentParser()
     args = parser.parse_args()
-    args.run_name = "DDPM_Uncondtional"
+    args.run_name = "DDPM_Uncondtional_pokemon"
     args.epochs = 500
     args.batch_size = 12
     args.image_size = 64
-    args.dataset_path = r"C:\Users\dome\datasets\landscape_img_folder"
+    args.dataset_path = r"C:\Users\mhueppe.LAPTOP-PKNG4OSF\MasterInformatik\Semester_1\ImageDiffusion\preprocessing\data"
     args.device = "cuda"
     args.lr = 3e-4
     train(args)

@@ -1,12 +1,14 @@
 import os
 import shutil
+
+import PIL
 from PIL import Image
 import cv2
 import numpy as np
 import ntpath
 
 
-def overwrite(img, image_path, jpg_path):
+def overwrite(img, image_path, jpg_path = None):
     if jpg_path is not None:
         img.save(image_path, "PNG")  # and save the new one
         os.remove(jpg_path)  # remove the original image
@@ -19,9 +21,7 @@ def overwrite(img, image_path, jpg_path):
 
 
 # uniform mode and size
-def resize_and_convert(image_path, image_width = 64, image_height = 64):
-    img = Image.open(image_path)
-
+def resize_and_convert(img, image_width = 64, image_height = 64):
     if img.mode != "RGB":
         img = img.convert("RGBA")  # convert image to "RGBA" to paste it with a white background
         background = Image.new("RGB", img.size, (255, 255, 255))
@@ -36,13 +36,14 @@ def resize_and_convert(image_path, image_width = 64, image_height = 64):
         img.save(image_path, 'PNG')  # save the new image
 
 
-def resize_and_save(image_path = None, image_width = 64, image_height = 64):
-    img = Image.open(image_path)
-
-    if img.size != (image_height, image_width):
-        img = img.resize((image_height, image_width))  # resize to 64,64,3
-        os.remove(image_path)  # remove the original image
-        img.save(image_path, 'PNG')  # save the new image
+def resize_and_save(img, image_path, image_width = 64, image_height = 64):
+    try:
+        if img.size != (image_height, image_width):
+            img = img.resize((image_height, image_width))  # resize to 64,64,3
+            os.remove(image_path)  # remove the original image
+            img.save(image_path, 'PNG')  # save the new image
+    except PIL.UnidentifiedImageError:
+        pass
 
 def resize(img = None,image_path = None, image_width = 64, image_height = 64):
     if img is None:
@@ -56,17 +57,17 @@ def resize(img = None,image_path = None, image_width = 64, image_height = 64):
 def make_png(image_path):
     # removing any non png and converting it into png (jpeg, jpg)
     img = Image.open(image_path)
-    if ".png" in image_path: return img
+    if ".png" in image_path: return image_path, img
     if ".jpg" in image_path:
         fp = image_path.replace(".jpg", ".png")
         img.save(fp, "PNG")
         os.remove(image_path)
-        return Image.open(fp)
+        return fp, Image.open(fp)
     if ".jpeg" in image_path:
         fp = image_path.replace(".jpeg", ".png")
         img.save(fp, "PNG")
         os.remove(image_path)
-        return Image.open(fp)
+        return fp, Image.open(fp)
 
 
 # uniform the backgrounds
@@ -94,12 +95,10 @@ def make_white(img, b=0, g=0, r=0):
 
 # check for white background
 def uniform_background(img, r=0, g=0, b=0):
-    cv_img = cv2.imread(img)
+    cv_img = convert_pil_to_cv(img)
 
     number_of_white_pix = np.sum(cv_img == (255, 255, 255))
     number_of_other_pix = np.sum(cv_img == (r, g, b))
-    img = Image.open(image_path)
-
     # if there are more black/green/red/blue pixels than white change them to white
     # the background has a very distinct color (126 for the respective color channel)
     # which is only used as a background because of resizing the there are also very few
@@ -148,29 +147,27 @@ def convert_cv_to_pil(img):
     return pil_image
 
 
-def center_focus(image_path, tol=255, border=4):
+def center_focus(img, tol=255, border=4):
     """
     Removes unnecessary white borders of image (makes the entire image to its focal point)
     :param image_path: str - path to the images.
     :param tol: background color or border color to be removed
     :param border: remaining border of the image
     """
-
-    img = cv2.imread(image_path)
-    mask = img < tol
-    if img.ndim == 3:
+    cv_img = convert_pil_to_cv(img)
+    mask = cv_img < tol
+    if cv_img.ndim == 3:
         mask = mask.all(2)
     m, n = mask.shape
     mask0, mask1 = mask.any(0), mask.any(1)
     col_start, col_end = mask0.argmax(), n - mask0[::-1].argmax()
     row_start, row_end = mask1.argmax(), m - mask1[::-1].argmax()
-    img1 = pad_to_square(img[row_start - border:row_end + border, col_start - border:col_end + border])
+    img1 = pad_to_square(cv_img[row_start - border:row_end + border, col_start - border:col_end + border])
     # You may need to convert the color.
     img1 = cv2.cvtColor(img1, cv2.COLOR_BGR2RGB)
     img1 = Image.fromarray(img1)
     n_pixels = img1.size[0] * img1.size[1] * 3
     if np.sum(convert_pil_to_cv(img1) == (255, 255, 255)) > n_pixels*0.9:
-        print(f"{Path(image_path).name} would have been destroyed")
         return img
     else:
         return img1
@@ -183,23 +180,22 @@ def path_leaf(path):
 
 def uniform(image_path, image_height=64, image_width=64):
     # uniform the filetype
-    img = make_png(image_path)
+    save_path, img = make_png(image_path)
     img = uniform_background(img)
     img = center_focus(img)
-    try:
-        # uniform the size and the transparency
-        resize_and_convert(image_path, image_height, image_width)
-    except:
-        resize_and_save(image_path)
+    img = img.resize((image_height, image_width))
+    img.save(save_path, "PNG")
     # uniform the backgrounds
 
 
 if __name__ == "__main__":
     # get all the needed paths
-    current = os.getcwd()
-    images = os.listdir("./images")
+    path = r"C:\Users\mhueppe.LAPTOP-PKNG4OSF\MasterInformatik\Semester_1\ImageDiffusion\preprocessing\data\uniform data"
 
-    for image in images:
-        image_path = os.path.join("./images", image)
-        uniform(image_path, 64, 64)
-    print("Done")
+    for image in os.listdir(path):
+        image_path = os.path.join(path, image)
+        try:
+            uniform(image_path, 64*2, 64*2)
+            print(image_path)
+        except:
+            print(image_path + " failed.")

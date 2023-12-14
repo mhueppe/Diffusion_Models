@@ -26,6 +26,8 @@
 \acrodef{DCGAN}{Deep Convolutional Generative Adversarial Network}
 \acrodef{DDPM}{Denoising Diffusion Probabilistic Models}
 \acrodef{MSE}{Mean-square Error}
+
+\acrodef{EMA}{Exponential Moving Average}
 \usepackage{enumitem}				
 \selectlanguage{english}
 
@@ -36,7 +38,7 @@
 \usepackage{algorithm}									% Algorithms and Pseudocode
 \usepackage{amsfonts}                   % AMS Math Packet (Fonts)
 \usepackage{amsmath}                    % AMS Math Packet
-\usepackage{amssymb}                    % Additional mathematical symbols
+\usepackage{amssymb}                    % Additional mathtical symbols
 \usepackage{hyperref}             % Additional mathematical symbols
 \usepackage{amsthm}
 \usepackage{booktabs}                   % Nicer tables
@@ -280,7 +282,7 @@ The following describes the results reported on both the \href{https://www.cs.to
 \subsection{CIFAR-10}
 To validate the model pipeline we first trained the model on the \href{https://www.cs.toronto.edu/~kriz/cifar.html}{cifar10} dataset since the model has already reported good results on this data. The CIFAR-10 dataset is a collection of 60,000 32x32 color images in 10 different classes, with 6,000 images per class. Each image belongs to one of the following classes:
 
-\begin{multicols}{3}
+\begin{multicols}{4}
 	\begin{enumerate}[itemsep=2pt,parsep=2pt]
 		\item airplane
 		\item car
@@ -299,6 +301,13 @@ Similarly, our model reported good results as well.
 
 Figure (TBA) shows the decrease of \ac{MSE} over time. 
 Figure (TBA) shows the predicted images over time. As one can see the images predicted in the early stages of training were not reminiscent of the input data and mostly show either random noise or images containing only one colour. Similar to how the \ac{MSE} decreased over time the quality of the images increased. The final images clearly depict objects of the respected class. 
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=1\linewidth]{src/Images/cifar10_results}
+	\caption[Generated images of \ac{DDPM}]{Generated images of \ac{DDPM}}
+\label{fig:cifar10results}
+\end{figure}
 
 \section{Discussion}
 \label{sec:discussion}
