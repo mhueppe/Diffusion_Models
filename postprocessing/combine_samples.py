@@ -44,7 +44,7 @@ if __name__ == '__main__':
 
     use_ema = False
     use_file = lambda f: ("ema" in f if use_ema else "ema" not in f) and ".jpg" in f
-    dir_path = r"C:\Users\mhueppe.LAPTOP-PKNG4OSF\MasterInformatik\Semester_1\ImageDiffusion\results\DDPM_conditional_cifar10_32"
+    dir_path = r"C:\Users\mhueppe.LAPTOP-PKNG4OSF\MasterInformatik\Semester_1\ImageDiffusion\results\DDPM_conditional_pokemon"
     files = [os.path.join(dir_path, file) for file in os.listdir(dir_path) if use_file(file)]
     files.sort(key=lambda file: [int(x) if x.isdigit() else x for x in re.findall(r"[^0-9]|[0-9]+", Path(file).name)])
 
@@ -56,7 +56,7 @@ if __name__ == '__main__':
     fig, (regular_ax, ema_ax) = plt.subplots(2)
     # fig.set_size_inches(15, 5)
 
-    title = fig.suptitle("Results after 100 epochs")
+    title = fig.suptitle("Cifar10 Results after 100 epochs")
     og_img = regular_ax.imshow(concatenate_and_get_columns(files[-1], n_columns))
     regular_ax.set_yticks([], [])
     regular_ax.set_xticks([i+image_size/2 for i in range(0, image_size*n_classes, image_size)], ["Airplane", "Car", "Bird", "Cat", "Deer", "Dog", "Frog", "Horse", "Ship", "Truck"])
@@ -74,6 +74,6 @@ if __name__ == '__main__':
     ema_ax.set_title("DDPM with EMa")
     fig.tight_layout()
     # Save the plot as an SVG file
-    plt.savefig(r'C:\Users\mhueppe.LAPTOP-PKNG4OSF\MasterInformatik\Semester_1\ImageDiffusion\Paper\src\Images\cifar10_results.svg', format='svg', dpi=300, bbox_inches='tight')
 
+    plt.savefig(r'C:\Users\mhueppe.LAPTOP-PKNG4OSF\MasterInformatik\Semester_1\ImageDiffusion\Paper\src\Images\pokemon_results.png', format='png', dpi=1000, bbox_inches='tight')
     plt.show()

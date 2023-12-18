@@ -26,7 +26,7 @@
 \acrodef{DCGAN}{Deep Convolutional Generative Adversarial Network}
 \acrodef{DDPM}{Denoising Diffusion Probabilistic Models}
 \acrodef{MSE}{Mean-square Error}
-
+\acrodef{CIFAR-10}{Canadian Institute for Advanced Research - 10}
 \acrodef{EMA}{Exponential Moving Average}
 \usepackage{enumitem}				
 \selectlanguage{english}
@@ -161,15 +161,12 @@ The community's embrace of "Fakémons," or self-made Pokémon, has reached a poi
 % each section is assigned a label, in order to be able to put a
 % crossreference to it
 
+\newpage
+
 \section{Introduction}
 \label{sec:introduction}
 
-\begin{itemize}
-	\item provide overview of the importance and possible applications of the 3D object detection (possibly extending the ones names by )
-	\item describe the motivation for using machine learning in 3D object detection
-	\item motivate why we want to reproduce the findings from 
-	\item outline the structure of the paper
-\end{itemize}
+The following presents the possibility and methodology of using \ac{DDPM} to generate novel designs for Pokémons. Firstly, previous approaches and their used models are presented in Section \ref{sec:relwork}. Following, the methodology is described namely the model architecture in Section \ref{sec:model} and \ref{sec:dataAca_and_preprocessing}. Finally, the results are presented and discussed in Section \ref{sec:results} and \ref{sec:discussion}. Section \ref{sec:conclusion} presents the shortcomings of this study and what can be improved upon. 
 %
 %
 \section{Related Work}
@@ -193,15 +190,23 @@ Using the same dataset \cite{Chambel2022} trained a \ac{DCGAN} and achieved bett
 	\label{fig:chambelresults}
 \end{figure}
 
+\newpage
 
-\section{Background}
-\label{sec:background}
-\cite{Ho2020} present a new generative deep neural network architecture called the \ac{DDPM}. 
-%
+\section{Model}
+\label{sec:model}
+The model employed was based on the \ac{DDPM} presented by \cite{Ho2020}. \cite{Ho2020} presents both an unconditional Model and a conditional one. For generating the images we only employed the conditional architecture. However, the architecture was slightly modified. The most significant change was the implementation of a scale factor which gives the ability to increase/decrease the amount of model parameters. 
+
+\ac{DDPM} are a class of generative models that aim to model the data distribution by defining a diffusion process. The primary idea behind \ac{DDPM}s is to transform a simple distribution (e.g., a Gaussian distribution) into the target data distribution through a series of carefully designed transformations. This diffusion process is done step-by-step slowly transforming the input noise to an image resembling the training data. \\
+At each step of the diffusion process, a noise is added to the data, and the data is transformed to a new state. This process is repeated multiple times until the input noise has been transformed to an image resembling the training data. \\
+The model is trained by optimizing its parameters to maximize the likelihood of the observed data. During training, the model learns the transformations that map the simple initial distribution to the target data distribution. This involves adjusting the parameters in a way that the generated samples match the characteristics of the training data.\\
+Once trained, the DDPM can generate new samples by starting with samples from the simple initial distribution and applying the learned reverse transformations in the reverse order.\\
+
+Overall, DDPMs provide a probabilistic framework for generative modeling, leveraging a diffusion process to model the transformation from a simple distribution to a complex data distribution. This allows them to capture intricate patterns and dependencies in the data.
+
 \section{Data Acquisition and Preprocessing}
 \label{sec:dataAca_and_preprocessing}
 \subsection{Acquisition}
-There is no official Pokémon dataset that provides the extensive sample size typically required for training generative deep learning models \citep{Yang2023}. Most of the available datasets offer only one image per Pokémon, resulting in approximately 1000 images in total. In comparison, the \href{https://www.cs.toronto.edu/~kriz/cifar.html}{cifar10} dataset consists of 60,000 samples. Moreover, each Pokémon has a unique and easily distinguishable design, making it challenging to identify similarities between them. To address this limitation, I opted to create my own Pokémon dataset using web scraping.
+There is no official Pokémon dataset that provides the extensive sample size typically required for training generative deep learning models \citep{Yang2023}. Most of the available datasets offer only one image per Pokémon, resulting in approximately 1000 images in total. In comparison, the \href{https://www.cs.toronto.edu/~kriz/cifar.html}{\ac{CIFAR-10}} dataset consists of 60,000 samples. Moreover, each Pokémon has a unique and easily distinguishable design, making it challenging to identify similarities between them. To address this limitation, I opted to create my own Pokémon dataset using web scraping.
 
 I used web scraping to extract data from the \href{https://pokemondb.net/}{Pokémon database}, which lists all Pokémon along with various design variations for each. The Python packages \href{https://www.crummy.com/software/BeautifulSoup/bs4/doc/}{BeautifulSoup} and \href{https://requests.readthedocs.io/en/latest/}{requests} packages provide functions to parse the website into \ac{HTML} and identify relevant tags. The \href{https://pokemondb.net/pokedex/national}{national Pokédex} which provides a list of all current Pokémon organized by Generation \footnote{In the context of Pokémon, a "generation" refers to a specific group or series of Pokémon games released by Nintendo and Game Freak. Each generation introduces a new set of Pokémon species, game mechanics, and often a new region to explore.} represents the start point of the acquisition pipeline.
 
@@ -267,22 +272,18 @@ An example for a sample before and after applying the uniform process can be see
 	\label{fig:preprocessingpipeline}
 \end{figure}
 
-%
-\section{Model}
-\label{sec:model}
-The model employed was based on the \ac{DDPM} presented by \cite{Ho2020}. \cite{Ho2020} presents both an unconditional Model and a conditional one. For generating the images we only employed the conditional architecture. However, the architecture was slightly modified. The most significant change was the implementation of a scale factor which gives the ability to increase/decrease the amount of model parameters. 
+The previous preprocessing steps were done before training the model to ensure that the focus for each samples is on the Pokémon. In addition to this, more preprocessing was done while training to each sample. This included applying a random crop to the image, randomly flipping it on the vertical axis and normalize each colour channel to have a mean of 1 and a standard deviation of 1.
 
-\section{Model training}
-\label{sec:model_training}
+\newpage
 
 \section{Results}\label{sec:results}
-The following describes the results reported on both the \href{https://www.cs.toronto.edu/~kriz/cifar.html}{cifar10} dataset and our own Pokémon dataset. Since the quality of the generated image is somewhat subjective the \ac{MSE} during training is presented as well. 
+The following describes the results reported on both the \href{https://www.cs.toronto.edu/~kriz/cifar.html}{\ac{CIFAR-10}} dataset and our own Pokémon dataset. Since the quality of the generated image is somewhat subjective the \ac{MSE} during training is presented as well. 
 
 
-\subsection{CIFAR-10}
-To validate the model pipeline we first trained the model on the \href{https://www.cs.toronto.edu/~kriz/cifar.html}{cifar10} dataset since the model has already reported good results on this data. The CIFAR-10 dataset is a collection of 60,000 32x32 color images in 10 different classes, with 6,000 images per class. Each image belongs to one of the following classes:
+\subsection{\ac{CIFAR-10}}\label{sec:results:cifar10}
+To validate the model pipeline we first trained the model on the \href{https://www.cs.toronto.edu/~kriz/cifar.html}{\ac{CIFAR-10}} dataset since the model has already reported good results on this data. The \ac{CIFAR-10} dataset is a collection of 60,000 32x32 color images in 10 different classes, with 6,000 images per class. Each image belongs to one of the following classes:
 
-\begin{multicols}{4}
+\begin{multicols}{5}
 	\begin{enumerate}[itemsep=2pt,parsep=2pt]
 		\item airplane
 		\item car
@@ -299,29 +300,57 @@ To validate the model pipeline we first trained the model on the \href{https://w
 
 Similarly, our model reported good results as well. 
 
-Figure (TBA) shows the decrease of \ac{MSE} over time. 
+Figure \ref{fig:cifar10msewithpredictions} shows the change of \ac{MSE} during training. Additionally, epoch 30 and 100 are highlighted with sample images from these epochs. The \ac{MSE} decreases rapidly at the start of the training. For the following epochs the \ac{MSE} hovers around 0.01 and 0.04. While stable within this range there is no steady (in-)decrease. However, the images differ heavily when it comes to resemblance to the training images. 
 Figure (TBA) shows the predicted images over time. As one can see the images predicted in the early stages of training were not reminiscent of the input data and mostly show either random noise or images containing only one colour. Similar to how the \ac{MSE} decreased over time the quality of the images increased. The final images clearly depict objects of the respected class. 
 
-\begin{figure}[h]
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\linewidth]{src/Images/cifar10_mse_with_predictions}
+	\caption[\ac{CIFAR-10} \ac{MSE} over time.]{\ac{CIFAR-10} \ac{MSE} over time.}
+	\label{fig:cifar10msewithpredictions}
+\end{figure}
+
+
+\begin{figure}[H]
 	\centering
 	\includegraphics[width=1\linewidth]{src/Images/cifar10_results}
-	\caption[Generated images of \ac{DDPM}]{Generated images of \ac{DDPM}}
+	\caption[Generated \ac{CIFAR-10} images of \ac{DDPM}]{Generated images of \ac{DDPM}}
 \label{fig:cifar10results}
 \end{figure}
 
+\subsection{Pokémon}\label{sec:pokémon}
+The results presented in Section \ref{sec:results:cifar10} validated that the \ac{DDPM} was able to replicate images from the training dataset specific for each class. The following describes model performance on the self-crafted Pokémon dataset. 
+
+Figure \ref{fig:pokemonperbodytype} displays generated images after training for each respective class showing the conditionality of the model. Most generated images resemble the body type they are attributed to. 
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\linewidth]{src/Images/pokemon_per_body_type}
+	\caption[Pokémon per body type]{Pokémon per body type.}
+	\label{fig:pokemonperbodytype}
+\end{figure}
+
+Figure \ref{fig:pokemonmsewithpredictions} shows the change of \ac{MSE} during training. Similarly to Figure \ref{fig:cifar10msewithpredictions} there is a rapid decrease of \ac{MSE} at the start of the training with a \ac{MSE} staying relatively constant. Consistent with the results for the \ac{CIFAR-10} dataset the images keep improving even though the loss seems to be stagnant. However, there is a variety in quality of generated pictures with respect to class. Namely, the body types with wings seem to be replicated the best.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=1.1\linewidth]{src/Images/pokemon_mse_with_predictions}
+	\caption[Change of \ac{MSE} over time.]{Change of \ac{MSE} over time. The \ac{MSE} values leading up to the 30 and 100 epoch are highlighted. Additionally, generated samples for both highlighted epochs are shown.}
+	\label{fig:pokemonmsewithpredictions}
+\end{figure}
+
+
 \section{Discussion}
 \label{sec:discussion}
-Our model showed good results both on the benchmark dataset and our own created dataset. The diffusion model and the increased size of the dataset showed to positively influence the quality of the predicted images. Our images had a more recognizable design than previous studies (see Figure \ref{fig:kleiberresults} \& \ref{fig:chambelresults} ). This was expected since generative models are known to work best with larger datasets \citep{Yang2023}. Additionally, \ac{DDPM}s show to generate higher quality images than simple \ac{GAN}s \citep{Guarnera2023}.
+Our model demonstrated comparable performance on both the benchmark dataset and our custom created dataset. The incorporation of the diffusion model and the expansion of the dataset proved to exert a positive influence on the quality of the predicted images. Notably, our images exhibited a more refined design compared to previous studies (refer to Figure \ref{fig:kleiberresults} \& \ref{fig:chambelresults}). This outcome was anticipated, as generative models tend to excel when operating with larger datasets \citep{Yang2023}. Furthermore, it is noteworthy that \ac{DDPM}s exhibited the capability to generate images of higher quality compared to simpler \ac{GAN}s \citep{Guarnera2023}.
+
+The displayed examples in Figure \ref{fig:pokemonperbodytype} depict that the model is generally able to generate Pokémon for a given body type. The samples were grouped to maximize the similarity within a class and the difference between two classes. However, Pokémon expressed their associated body type to various degrees blurring the lines between classes and decreasing the similarity within a class. \\
+The following phenomena were found regardless of dataset: Even though the \ac{MSE} was not steadily decreasing after a certain amount of time the generated images were still improving. The quality of images was dependent on the class were images for some classes were more indicative of the training images than other classes. The images that showed the highest image quality for the \ac{CIFAR-10} dataset were images belonging to the class car, truck and ship. For the Pokémon dataset the body types showing the highest quality in generated images were single/multiple pair of wings and only head. Additionally, no significant difference in quality between images generated using \ac{EMA} compared to images where \ac{EMA} was not used can be seen. This is depicted in Figure \ref{fig:cifar10results}.
 
 \section{Conclusion}
 \label{sec:conclusion}
 
-\begin{itemize}
-	\item How are the results of this study usable? 
-	\item Shortcomings of our study What was especially difficult? 	 
-	\item How can the results be improved upon? 
-	\item What might be further test that can be done to improve the generality? 
-\end{itemize}
+While the model was overall successful in generating Pokémon based on body type, the training was mainly impeded by the lack of hardware. The model was trained using an NVIDIA GeForce GTX 1650 with 4GB of dedicated GPU memory. This allowed only images of the size 34x34 to be trained on and generated. Additionally, the biggest batch size without exceeding the available space was 8 samples, which increased the training time and hindered the model from training on multiple samples at once. Future studies should aim to increase the size of the images to be trained on.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % hier werden - zum Ende des Textes - die bibliographischen Referenzen
@@ -330,6 +359,7 @@ Our model showed good results both on the benchmark dataset and our own created 
 % Insbesondere stehen die eigentlichen Informationen in der Datei
 % ``bib.bib''
 %
+\newpage
 \printbibliography[heading=bibintoc]
 
 \end{document}
