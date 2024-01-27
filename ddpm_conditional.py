@@ -115,8 +115,8 @@ def train(args):
         save_images(sampled_images, os.path.join("results", args.run_name, f"{epoch}.jpg"))
         save_images(ema_sampled_images, os.path.join("results", args.run_name, f"{epoch}_ema.jpg"))
         torch.save(model.state_dict(), os.path.join("models", args.run_name, f"ckpt.pt"))
-        torch.save(ema_model.state_dict(), os.path.join("models", args.run_name, f"ema_ckpt.pt"))
         torch.save(optimizer.state_dict(), os.path.join("models", args.run_name, f"optim.pt"))
+        torch.save(ema_model.state_dict(), os.path.join("models", args.run_name, f"ema_ckpt.pt"))
 
 def sample_images(diffusion, model, batch_size, labels):
     if batch_size < len(labels):
