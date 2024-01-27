@@ -171,6 +171,11 @@ The following presents the possibility and methodology of using \ac{DDPM} to gen
 %
 \section{Related Work}
 \label{sec:relwork}
+The following section is divided into two. Firstly, related works regarding \ac{GAN}s are discussed with a closer look into the current uses of \ac{DDPM}s. Secondly, previous approaches using \ac{GAN}s to create new images of Pokémon are analyzed. 
+There are multitudes of variation of \ac{GAN}s, with notable architectures like \ac{DCGAN} \citep{Radford2016}, StyleGAN \citep{Karras2019}, and BigGAN \citep{Brock2019}. While all of these models have the same underlying purpose, i.e. generating novel images based on an existing data pool, their architecture has been optimized for a specific task. For example the StyleGan architecture is used for combining images, often applying certain features of one image onto another \citep{Karras2019}. In contrast, the BigGan architecture is used to enhance the quality of images often up-scaling low resolution images to a higher resolution \citep{Brock2019}. \\
+Given their ability to model intricate patterns and dependencies within data \ac{DDPM}s have been employed in various tasks. For example, image translation \citep{Sasaki2021}, inpainting \citep{Lugmayr2022} or image restoration \citep{Nair2023}. \ac{DDPM}s have also been used beyond image generation, examples are feature extraction \citep{Bandara2024}, anomaly detection \citep{Wyatt2022} and time-series forecasting \citep{Rasul2021}. Given their variability in use-cases \ac{DDPM}s are a good fit for generating new Pokémon designs. \\
+
+
 Generating Pokémon using deep learning is not a novel idea. \cite{Kleiber2020} used a \ac{GAN} to create new Pokémon based on a dataset of ~800 data samples. The presented results seen in Figure \ref{fig:kleiberresults} can definitely be approved upon.\\
  
 
@@ -346,6 +351,9 @@ Our model demonstrated comparable performance on both the benchmark dataset and 
 
 The displayed examples in Figure \ref{fig:pokemonperbodytype} depict that the model is generally able to generate Pokémon for a given body type. The samples were grouped to maximize the similarity within a class and the difference between two classes. However, Pokémon expressed their associated body type to various degrees blurring the lines between classes and decreasing the similarity within a class. \\
 The following phenomena were found regardless of dataset: Even though the \ac{MSE} was not steadily decreasing after a certain amount of time the generated images were still improving. The quality of images was dependent on the class were images for some classes were more indicative of the training images than other classes. The images that showed the highest image quality for the \ac{CIFAR-10} dataset were images belonging to the class car, truck and ship. For the Pokémon dataset the body types showing the highest quality in generated images were single/multiple pair of wings and only head. Additionally, no significant difference in quality between images generated using \ac{EMA} compared to images where \ac{EMA} was not used can be seen. This is depicted in Figure \ref{fig:cifar10results}.
+
+A known problem with \ac{GAN}s is mode collapse. This phenomenon describes models which focus on the most common feature in the dataset to generate new images. Instead of generating diverse samples that cover the entire data distribution, the generator might focus on generating samples with certain features. This lack of diversity in the generated data can be seen in the class "only head".\\
+This category includes the Pokémon "Unknown", which mimics the Latin alphabet and thus has 28 variations. Though different, all variations follow the same design rules, black lines and one eye. Accounting for all different image types 53\% of the images in this category were just depicting some variation of this Pokémon. This can be seen in the results generated for this class. Mainly, most of th generated images follow the "Unknown" design. Examples can be seen in Figure \ref{fig:}. This mode collapse can be avoided by filtering the images within the class. 
 
 \section{Conclusion}
 \label{sec:conclusion}
