@@ -353,7 +353,27 @@ The displayed examples in Figure \ref{fig:pokemonperbodytype} depict that the mo
 The following phenomena were found regardless of dataset: Even though the \ac{MSE} was not steadily decreasing after a certain amount of time the generated images were still improving. The quality of images was dependent on the class were images for some classes were more indicative of the training images than other classes. The images that showed the highest image quality for the \ac{CIFAR-10} dataset were images belonging to the class car, truck and ship. For the Pokémon dataset the body types showing the highest quality in generated images were single/multiple pair of wings and only head. Additionally, no significant difference in quality between images generated using \ac{EMA} compared to images where \ac{EMA} was not used can be seen. This is depicted in Figure \ref{fig:cifar10results}.
 
 A known problem with \ac{GAN}s is mode collapse. This phenomenon describes models which focus on the most common feature in the dataset to generate new images. Instead of generating diverse samples that cover the entire data distribution, the generator might focus on generating samples with certain features. This lack of diversity in the generated data can be seen in the class "only head".\\
-This category includes the Pokémon "Unknown", which mimics the Latin alphabet and thus has 28 variations. Though different, all variations follow the same design rules, black lines and one eye. Accounting for all different image types 53\% of the images in this category were just depicting some variation of this Pokémon. This can be seen in the results generated for this class. Mainly, most of th generated images follow the "Unknown" design. Examples can be seen in Figure \ref{fig:}. This mode collapse can be avoided by filtering the images within the class. 
+This category includes the Pokémon "Unknown", which mimics the Latin alphabet and thus has 28 variations. Though different, all variations follow the same design rules, black lines and one eye. Accounting for all different image types 53\% of the images in this category were just depicting some variation of this Pokémon. This can be seen in the results generated for this class. Mainly, most of th generated images follow the "Unknown" design. Examples can be seen in Figure \ref{fig:unknownvariety}. This mode collapse can be avoided by filtering the images within the class.\\
+This can be avoided by using sub sampling i.e. train more on the Pokémons in this category that are represented less. 
+ 
+
+
+Moreover, there is a noticeable difference in the coherence of images among classes. Images generated for a specific class exhibit greater similarities, whereas other classes display a higher variance in the generated images. This is illustrated in Figure \ref{fig:}. The samples generated for the class "quadrupled" differ more strongly in comparison to images generated for the class "winged".
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.5\linewidth]{src/Images/head_generated}
+	\caption[Generated images for head]{Different generated images for the head category. It can be seen that the model replicates the design of the Pokémon "Unknown".}
+	\label{fig:unknownvariety}
+\end{figure}
+
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.9\linewidth]{src/Images/category_comparison}
+	\caption[Class Comparison]{Comparison between classes}
+	\label{fig:categorycomparison}
+\end{figure}
 
 \section{Conclusion}
 \label{sec:conclusion}
