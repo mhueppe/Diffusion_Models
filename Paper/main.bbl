@@ -547,6 +547,48 @@
       \verb https://proceedings.mlr.press/v139/rasul21a.html
       \endverb
     \endentry
+    \entry{Ronneberger2015}{misc}{}
+      \name{author}{3}{}{%
+        {{un=0,uniquepart=base,hash=8e46da9de9e53ea5d37089897d69cdd9}{%
+           family={Ronneberger},
+           familyi={R\bibinitperiod},
+           given={Olaf},
+           giveni={O\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=168e84ce3582cbc6bac5e2ebc3ef8442}{%
+           family={Fischer},
+           familyi={F\bibinitperiod},
+           given={Philipp},
+           giveni={P\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=b452a32296958371572717940f900884}{%
+           family={Brox},
+           familyi={B\bibinitperiod},
+           given={Thomas},
+           giveni={T\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{9a497128db448eba9bbb6e27b1ed57ed}
+      \strng{fullhash}{f23ccc5160c62c7866172335b2c76e11}
+      \strng{bibnamehash}{f23ccc5160c62c7866172335b2c76e11}
+      \strng{authorbibnamehash}{f23ccc5160c62c7866172335b2c76e11}
+      \strng{authornamehash}{9a497128db448eba9bbb6e27b1ed57ed}
+      \strng{authorfullhash}{f23ccc5160c62c7866172335b2c76e11}
+      \field{sortinit}{R}
+      \field{sortinithash}{5e1c39a9d46ffb6bebd8f801023a9486}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{eprintclass}{cs.CV}
+      \field{eprinttype}{arXiv}
+      \field{title}{U-Net: Convolutional Networks for Biomedical Image Segmentation}
+      \field{year}{2015}
+      \verb{eprint}
+      \verb 1505.04597
+      \endverb
+    \endentry
     \entry{Sasaki2021}{misc}{}
       \name{author}{3}{}{%
         {{un=0,uniquepart=base,hash=ac5f5272e133ce7246b61550c125a4fa}{%
@@ -716,6 +758,73 @@
       \field{year}{2023}
       \field{pages}{1\bibrangedash 39}
       \range{pages}{39}
+    \endentry
+    \entry{Zhang2018}{article}{}
+      \name{author}{3}{}{%
+        {{un=0,uniquepart=base,hash=802979ac7da019e1cc201a3414aa0d05}{%
+           family={Zhang},
+           familyi={Z\bibinitperiod},
+           given={Zhaoyu},
+           giveni={Z\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=db9b3b45609f71fd79954cf29406df1b}{%
+           family={Li},
+           familyi={L\bibinitperiod},
+           given={Mengyan},
+           giveni={M\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=94658a16389c695058255d9358d09cdd}{%
+           family={Yu},
+           familyi={Y\bibinitperiod},
+           given={Jun},
+           giveni={J\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{location}{1}{%
+        {New York, NY, USA}%
+      }
+      \list{publisher}{1}{%
+        {Association for Computing Machinery}%
+      }
+      \strng{namehash}{b93f109ffd9bffed5dcd09892d4bad61}
+      \strng{fullhash}{9feb53ff3726acdebac9690e55d3c950}
+      \strng{bibnamehash}{9feb53ff3726acdebac9690e55d3c950}
+      \strng{authorbibnamehash}{9feb53ff3726acdebac9690e55d3c950}
+      \strng{authornamehash}{b93f109ffd9bffed5dcd09892d4bad61}
+      \strng{authorfullhash}{9feb53ff3726acdebac9690e55d3c950}
+      \field{sortinit}{Z}
+      \field{sortinithash}{96892c0b0a36bb8557c40c49813d48b3}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{Generative adversarial network (GAN) is a powerful generative model. However, it suffers from several problems, such as convergence instability and mode collapse. To overcome these drawbacks, this paper presents a novel architecture of GAN, which consists of one generator and two different discriminators. With the fact that GAN is the analogy of a minimax game, the proposed architecture is as follows. The generator (G) aims to produce realistic-looking samples to fool both of two discriminators. The first discriminator (D1) rewards high scores for samples from the data distribution, while the second one (D2) favors samples from the generator conversely. Specifically, the ResBlock and minibatch discrimination (MD) architectures are adopted in D1 to improve the diversity of the samples. The leaky rectified linear unit (Leaky ReLU) and batch normalization (BN) are replaced by the scaled exponential linear unit (SELU) in D2 to alleviate the convergence problem. A new loss function that minimizes the KL divergence is designed to better optimize the model. Extensive experiments on CIFAR-10/100 datasets demonstrate that the proposed method can effectively solve the problems of convergence and mode collapse.}
+      \field{isbn}{9781450360623}
+      \field{journaltitle}{{SIGGRAPH} {Asia} 2018 {Technical} {Briefs}}
+      \field{month}{12}
+      \field{series}{{SA} '18}
+      \field{title}{On the convergence and mode collapse of {GAN}}
+      \field{urlday}{28}
+      \field{urlmonth}{1}
+      \field{urlyear}{2024}
+      \field{year}{2018}
+      \field{urldateera}{ce}
+      \field{pages}{1\bibrangedash 4}
+      \range{pages}{4}
+      \verb{doi}
+      \verb 10.1145/3283254.3283282
+      \endverb
+      \verb{file}
+      \verb :Zhang2018 - On the Convergence and Mode Collapse of GAN.pdf:PDF
+      \endverb
+      \verb{urlraw}
+      \verb https://dl.acm.org/doi/10.1145/3283254.3283282
+      \endverb
+      \verb{url}
+      \verb https://dl.acm.org/doi/10.1145/3283254.3283282
+      \endverb
+      \keyw{GAN,convergence,mode collapse}
     \endentry
   \enddatalist
   \datalist[entry]{apa/global//global/global}
@@ -1247,6 +1356,48 @@
       \verb https://proceedings.mlr.press/v139/rasul21a.html
       \endverb
     \endentry
+    \entry{Ronneberger2015}{misc}{}
+      \name{author}{3}{}{%
+        {{un=0,uniquepart=base,hash=8e46da9de9e53ea5d37089897d69cdd9}{%
+           family={Ronneberger},
+           familyi={R\bibinitperiod},
+           given={Olaf},
+           giveni={O\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=168e84ce3582cbc6bac5e2ebc3ef8442}{%
+           family={Fischer},
+           familyi={F\bibinitperiod},
+           given={Philipp},
+           giveni={P\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=b452a32296958371572717940f900884}{%
+           family={Brox},
+           familyi={B\bibinitperiod},
+           given={Thomas},
+           giveni={T\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{9a497128db448eba9bbb6e27b1ed57ed}
+      \strng{fullhash}{f23ccc5160c62c7866172335b2c76e11}
+      \strng{bibnamehash}{f23ccc5160c62c7866172335b2c76e11}
+      \strng{authorbibnamehash}{f23ccc5160c62c7866172335b2c76e11}
+      \strng{authornamehash}{9a497128db448eba9bbb6e27b1ed57ed}
+      \strng{authorfullhash}{f23ccc5160c62c7866172335b2c76e11}
+      \field{sortinit}{R}
+      \field{sortinithash}{5e1c39a9d46ffb6bebd8f801023a9486}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{eprintclass}{cs.CV}
+      \field{eprinttype}{arXiv}
+      \field{title}{U-Net: Convolutional Networks for Biomedical Image Segmentation}
+      \field{year}{2015}
+      \verb{eprint}
+      \verb 1505.04597
+      \endverb
+    \endentry
     \entry{Sasaki2021}{misc}{}
       \name{author}{3}{}{%
         {{un=0,uniquepart=base,hash=ac5f5272e133ce7246b61550c125a4fa}{%
@@ -1416,6 +1567,73 @@
       \field{year}{2023}
       \field{pages}{1\bibrangedash 39}
       \range{pages}{39}
+    \endentry
+    \entry{Zhang2018}{article}{}
+      \name{author}{3}{}{%
+        {{un=0,uniquepart=base,hash=802979ac7da019e1cc201a3414aa0d05}{%
+           family={Zhang},
+           familyi={Z\bibinitperiod},
+           given={Zhaoyu},
+           giveni={Z\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=db9b3b45609f71fd79954cf29406df1b}{%
+           family={Li},
+           familyi={L\bibinitperiod},
+           given={Mengyan},
+           giveni={M\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=94658a16389c695058255d9358d09cdd}{%
+           family={Yu},
+           familyi={Y\bibinitperiod},
+           given={Jun},
+           giveni={J\bibinitperiod},
+           givenun=0}}%
+      }
+      \list{location}{1}{%
+        {New York, NY, USA}%
+      }
+      \list{publisher}{1}{%
+        {Association for Computing Machinery}%
+      }
+      \strng{namehash}{b93f109ffd9bffed5dcd09892d4bad61}
+      \strng{fullhash}{9feb53ff3726acdebac9690e55d3c950}
+      \strng{bibnamehash}{9feb53ff3726acdebac9690e55d3c950}
+      \strng{authorbibnamehash}{9feb53ff3726acdebac9690e55d3c950}
+      \strng{authornamehash}{b93f109ffd9bffed5dcd09892d4bad61}
+      \strng{authorfullhash}{9feb53ff3726acdebac9690e55d3c950}
+      \field{sortinit}{Z}
+      \field{sortinithash}{96892c0b0a36bb8557c40c49813d48b3}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{Generative adversarial network (GAN) is a powerful generative model. However, it suffers from several problems, such as convergence instability and mode collapse. To overcome these drawbacks, this paper presents a novel architecture of GAN, which consists of one generator and two different discriminators. With the fact that GAN is the analogy of a minimax game, the proposed architecture is as follows. The generator (G) aims to produce realistic-looking samples to fool both of two discriminators. The first discriminator (D1) rewards high scores for samples from the data distribution, while the second one (D2) favors samples from the generator conversely. Specifically, the ResBlock and minibatch discrimination (MD) architectures are adopted in D1 to improve the diversity of the samples. The leaky rectified linear unit (Leaky ReLU) and batch normalization (BN) are replaced by the scaled exponential linear unit (SELU) in D2 to alleviate the convergence problem. A new loss function that minimizes the KL divergence is designed to better optimize the model. Extensive experiments on CIFAR-10/100 datasets demonstrate that the proposed method can effectively solve the problems of convergence and mode collapse.}
+      \field{isbn}{9781450360623}
+      \field{journaltitle}{{SIGGRAPH} {Asia} 2018 {Technical} {Briefs}}
+      \field{month}{12}
+      \field{series}{{SA} '18}
+      \field{title}{On the convergence and mode collapse of {GAN}}
+      \field{urlday}{28}
+      \field{urlmonth}{1}
+      \field{urlyear}{2024}
+      \field{year}{2018}
+      \field{urldateera}{ce}
+      \field{pages}{1\bibrangedash 4}
+      \range{pages}{4}
+      \verb{doi}
+      \verb 10.1145/3283254.3283282
+      \endverb
+      \verb{file}
+      \verb :Zhang2018 - On the Convergence and Mode Collapse of GAN.pdf:PDF
+      \endverb
+      \verb{urlraw}
+      \verb https://dl.acm.org/doi/10.1145/3283254.3283282
+      \endverb
+      \verb{url}
+      \verb https://dl.acm.org/doi/10.1145/3283254.3283282
+      \endverb
+      \keyw{GAN,convergence,mode collapse}
     \endentry
   \enddatalist
 \endrefsection

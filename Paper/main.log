@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 23.10) (preloaded format=pdflatex 2023.12.2)  27 JAN 2024 23:00
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 23.10) (preloaded format=pdflatex 2023.12.2)  28 JAN 2024 12:25
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1196,133 +1196,143 @@ File: src/Images/Kleiber_results.png Graphic file (type png)
 Package pdftex.def Info: src/Images/Kleiber_results.png  used on input line 184
 .
 (pdftex.def)             Requested size: 419.16621pt x 50.96613pt.
-[2 <./src/Images/Kleiber_results.png>]
-<src/Images/Chambel_results.png, id=109, 458.9145pt x 40.953pt>
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+<src/Images/Chambel_results.png, id=88, 458.9145pt x 40.953pt>
 File: src/Images/Chambel_results.png Graphic file (type png)
 <use src/Images/Chambel_results.png>
 Package pdftex.def Info: src/Images/Chambel_results.png  used on input line 193
 .
 (pdftex.def)             Requested size: 419.16621pt x 37.40599pt.
- [3 <./src/Images/Chambel_results.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 204--208
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[2]
+Underfull \hbox (badness 10000) in paragraph at lines 203--208
 
  []
 
+
+Underfull \hbox (badness 10000) in paragraph at lines 210--212
+
+ []
+
+[3 <./src/Images/Kleiber_results.png> <./src/Images/Chambel_results.png>]
+<src/Images/u_net.png, id=122, 532.99126pt x 352.31625pt>
+File: src/Images/u_net.png Graphic file (type png)
+<use src/Images/u_net.png>
+Package pdftex.def Info: src/Images/u_net.png  used on input line 215.
+(pdftex.def)             Requested size: 293.41507pt x 193.9573pt.
 Package acronym Info: Label `acro:CIFAR-10' newly defined as it shall be overri
 dden
-although it is yet undefined on input line 214.
+although it is yet undefined on input line 224.
 Package acronym Info: Label `acro:HTML' newly defined as it shall be overridden
 
-although it is yet undefined on input line 216.
-[4]
-<src/Images/various_charizard.png, id=138, 4111.36pt x 1425.325pt>
+although it is yet undefined on input line 226.
+
+[4 <./src/Images/u_net.png>]
+<src/Images/various_charizard.png, id=144, 4111.36pt x 1425.325pt>
 File: src/Images/various_charizard.png Graphic file (type png)
 <use src/Images/various_charizard.png>
 Package pdftex.def Info: src/Images/various_charizard.png  used on input line 2
-24.
+34.
 (pdftex.def)             Requested size: 419.16621pt x 145.30293pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 229--231
+Underfull \hbox (badness 10000) in paragraph at lines 239--241
 
  []
 
 [5 <./src/Images/various_charizard.png>]
-<src/Images/bodyCategorys.png, id=152, 1927.2pt x 266.9975pt>
+<src/Images/bodyCategorys.png, id=172, 1927.2pt x 266.9975pt>
 File: src/Images/bodyCategorys.png Graphic file (type png)
 <use src/Images/bodyCategorys.png>
-Package pdftex.def Info: src/Images/bodyCategorys.png  used on input line 255.
+Package pdftex.def Info: src/Images/bodyCategorys.png  used on input line 265.
 (pdftex.def)             Requested size: 419.16621pt x 58.07147pt.
  [6 <./src/Images/bodyCategorys.png>]
-<src/Images/preprocessing_pipeline.png, id=175, 1090.0725pt x 465.74pt>
+<src/Images/preprocessing_pipeline.png, id=196, 1090.0725pt x 465.74pt>
 File: src/Images/preprocessing_pipeline.png Graphic file (type png)
 <use src/Images/preprocessing_pipeline.png>
 Package pdftex.def Info: src/Images/preprocessing_pipeline.png  used on input l
-ine 275.
+ine 285.
 (pdftex.def)             Requested size: 209.5831pt x 89.54329pt.
-
-[7 <./src/Images/preprocessing_pipeline.png>]
 Package acronym Info: Label `acro:MSE' newly defined as it shall be overridden
-although it is yet undefined on input line 285.
+although it is yet undefined on input line 294.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\@ac' on input line 288.
+(hyperref)                removing `\@ac' on input line 297.
 
-<src/Images/cifar10_mse_with_predictions.png, id=186, 585.387pt x 323.7696pt>
+<src/Images/cifar10_mse_with_predictions.png, id=200, 585.387pt x 323.7696pt>
 File: src/Images/cifar10_mse_with_predictions.png Graphic file (type png)
 <use src/Images/cifar10_mse_with_predictions.png>
 Package pdftex.def Info: src/Images/cifar10_mse_with_predictions.png  used on i
-nput line 313.
+nput line 322.
 (pdftex.def)             Requested size: 419.16621pt x 231.8344pt.
-<src/Images/cifar10_results.png, id=187, 539.1342pt x 271.0125pt>
+[7 <./src/Images/preprocessing_pipeline.png>]
+<src/Images/cifar10_results.png, id=220, 539.1342pt x 271.0125pt>
 File: src/Images/cifar10_results.png Graphic file (type png)
 <use src/Images/cifar10_results.png>
-Package pdftex.def Info: src/Images/cifar10_results.png  used on input line 321
+Package pdftex.def Info: src/Images/cifar10_results.png  used on input line 330
 .
 (pdftex.def)             Requested size: 419.16621pt x 210.70656pt.
-[8 <./src/Images/cifar10_mse_with_predictions.png>]
-<src/Images/pokemon_per_body_type.png, id=207, 1927.2pt x 266.9975pt>
+<src/Images/pokemon_per_body_type.png, id=223, 1927.2pt x 266.9975pt>
 File: src/Images/pokemon_per_body_type.png Graphic file (type png)
 <use src/Images/pokemon_per_body_type.png>
 Package pdftex.def Info: src/Images/pokemon_per_body_type.png  used on input li
-ne 333.
+ne 342.
 (pdftex.def)             Requested size: 419.16621pt x 58.07147pt.
-<src/Images/pokemon_mse_with_predictions.png, id=210, 657.657pt x 294.8616pt>
+ [8 <./src/Images/cifar10_mse_with_predictions.png> <./src/Images/cifar10_resul
+ts.png>]
+<src/Images/pokemon_mse_with_predictions.png, id=234, 657.657pt x 294.8616pt>
 File: src/Images/pokemon_mse_with_predictions.png Graphic file (type png)
 <use src/Images/pokemon_mse_with_predictions.png>
 Package pdftex.def Info: src/Images/pokemon_mse_with_predictions.png  used on i
-nput line 342.
+nput line 351.
 (pdftex.def)             Requested size: 461.08539pt x 206.73465pt.
 
-Overfull \hbox (41.91917pt too wide) in paragraph at lines 342--343
+Overfull \hbox (41.91917pt too wide) in paragraph at lines 351--352
  [][] 
  []
 
-[9 <./src/Images/cifar10_results.png> <./src/Images/pokemon_per_body_type.png>]
-Package acronym Info: Label `acro:EMA' newly defined as it shall be overridden
-although it is yet undefined on input line 353.
-[10 <./src/Images/pokemon_mse_with_predictions.png>]
+<src/Images/unown_examples.png, id=238, 2395.95125pt x 230.8625pt>
+File: src/Images/unown_examples.png Graphic file (type png)
+<use src/Images/unown_examples.png>
+Package pdftex.def Info: src/Images/unown_examples.png  used on input line 361.
 
-LaTeX Warning: Reference `fig:' on page 11 undefined on input line 361.
-
-<src/Images/head_generated.png, id=234, 590.205pt x 441.14813pt>
-File: src/Images/head_generated.png Graphic file (type png)
-<use src/Images/head_generated.png>
-Package pdftex.def Info: src/Images/head_generated.png  used on input line 365.
-
-(pdftex.def)             Requested size: 209.5831pt x 156.65244pt.
-<src/Images/category_comparison.png, id=235, 676.1625pt x 321.93pt>
+(pdftex.def)             Requested size: 335.33424pt x 32.30995pt.
+[9 <./src/Images/pokemon_per_body_type.png> <./src/Images/pokemon_mse_with_pred
+ictions.png>]
+<src/Images/category_comparison.png, id=249, 921.4425pt x 213.525pt>
 File: src/Images/category_comparison.png Graphic file (type png)
 <use src/Images/category_comparison.png>
 Package pdftex.def Info: src/Images/category_comparison.png  used on input line
- 373.
-(pdftex.def)             Requested size: 293.41507pt x 139.69946pt.
-[11 <./src/Images/head_generated.png>] [12 <./src/Images/category_comparison.pn
-g>]
-Overfull \hbox (1.01508pt too wide) in paragraph at lines 391--391
+ 372.
+(pdftex.def)             Requested size: 377.24702pt x 87.41873pt.
+ [10 <./src/Images/unown_examples.png> <./src/Images/category_comparison.png>]
+Package acronym Info: Label `acro:EMA' newly defined as it shall be overridden
+although it is yet undefined on input line 385.
+ [11]
+Overfull \hbox (1.01508pt too wide) in paragraph at lines 400--400
 [][]\OT1/cmr/m/n/12 Chambel, G. (2022). Gen-er-at-ing re-al-is-tic poke-mons us
 -ing a dc-gan. []$https : / / medium .
  []
 
 
-Overfull \hbox (11.82721pt too wide) in paragraph at lines 391--391
+Overfull \hbox (11.82721pt too wide) in paragraph at lines 400--400
 \OT1/cmr/m/n/12 com / @goncalorrc / generating -[] realistic -[] pokemons -[] u
 sing -[] a -[] dcgan -[] 331c7f75e211$[] 
  []
 
 
 Package biblatex Warning: Month out of range
-(biblatex)                at entry 'Rasul2021' on input line 391.
+(biblatex)                at entry 'Rasul2021' on input line 400.
 
-[13] (main.aux)
+[12] [13] (main.aux)
  ***********
 LaTeX2e <2023-06-01> patch level 1
 L3 programming layer <2023-08-29>
  ***********
-
-
-LaTeX Warning: There were undefined references.
-
 Package rerunfilecheck Info: File `main.out' has not changed.
 (rerunfilecheck)             Checksum: CEC95F045F16DEEDC05E9C1D3FC4A3CD;1286.
 Package logreq Info: Writing requests to 'main.run.xml'.
@@ -1330,13 +1340,13 @@ Package logreq Info: Writing requests to 'main.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 23373 strings out of 475247
- 411315 string characters out of 5749296
+ 23405 strings out of 475247
+ 412221 string characters out of 5749296
  1934785 words of memory out of 5000000
- 44517 multiletter control sequences out of 15000+600000
- 568432 words of font info for 76 fonts, out of 8000000 for 9000
+ 44546 multiletter control sequences out of 15000+600000
+ 568125 words of font info for 75 fonts, out of 8000000 for 9000
  1142 hyphenation exceptions out of 8191
- 75i,12n,81p,1131b,5052s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 75i,11n,81p,1325b,5052s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <C:/Users/mhueppe.LAPTOP-PKNG4OSF/AppData/Local/Programs/MiKTeX/fonts/type1/p
 ublic/amsfonts/cm/cmbx10.pfb><C:/Users/mhueppe.LAPTOP-PKNG4OSF/AppData/Local/Pr
 ograms/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Users/mhueppe.LAPTO
@@ -1348,9 +1358,9 @@ ograms/MiKTeX/fonts/type1/public/amsfonts/cm/cmr17.pfb><C:/Users/mhueppe.LAPTOP
 ><C:/Users/mhueppe.LAPTOP-PKNG4OSF/AppData/Local/Programs/MiKTeX/fonts/type1/pu
 blic/amsfonts/cm/cmr8.pfb><C:/Users/mhueppe.LAPTOP-PKNG4OSF/AppData/Local/Progr
 ams/MiKTeX/fonts/type1/public/amsfonts/cm/cmti12.pfb>
-Output written on main.pdf (13 pages, 7461090 bytes).
+Output written on main.pdf (13 pages, 7470614 bytes).
 PDF statistics:
- 315 PDF objects out of 1000 (max. 8388607)
- 84 named destinations out of 1000 (max. 500000)
- 152 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 345 PDF objects out of 1000 (max. 8388607)
+ 87 named destinations out of 1000 (max. 500000)
+ 157 words of extra memory for PDF output out of 10000 (max. 10000000)
 

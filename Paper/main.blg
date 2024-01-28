@@ -1,23 +1,23 @@
 [0] Config.pm:307> INFO - This is Biber 2.19
 [0] Config.pm:310> INFO - Logfile is 'main.blg'
-[324] biber-MSWIN64:340> INFO - === 
-[413] Biber.pm:419> INFO - Reading 'main.bcf'
-[876] Biber.pm:979> INFO - Found 14 citekeys in bib section 0
-[933] Biber.pm:4419> INFO - Processing section 0
-[970] Biber.pm:4610> INFO - Looking for bibtex file 'main.bib' for section 0
-[1199] bibtex.pm:1713> INFO - LaTeX decoding ...
-[1232] bibtex.pm:1519> INFO - Found BibTeX data source 'main.bib'
-[1610] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'variable = shifted' with 'variable = non-ignorable'
-[1611] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'normalization = NFD' with 'normalization = prenormalized'
-[1611] Biber.pm:4239> INFO - Sorting list 'apa/apasortcite//global/global' of type 'entry' with template 'apa' and locale 'en-US'
-[1611] Biber.pm:4245> INFO - No sort tailoring available for locale 'en-US'
-[1695] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'normalization = NFD' with 'normalization = prenormalized'
-[1695] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'variable = shifted' with 'variable = non-ignorable'
-[1695] Biber.pm:4239> INFO - Sorting list 'apa/global//global/global' of type 'entry' with template 'apa' and locale 'en-US'
-[1695] Biber.pm:4245> INFO - No sort tailoring available for locale 'en-US'
-[1744] bbl.pm:660> INFO - Writing 'main.bbl' with encoding 'UTF-8'
-[1799] bbl.pm:763> INFO - Output to main.bbl
-[1800] Biber.pm:131> WARN - legacy month field 'January' in entry 'Nair2023' is not an integer - this will probably not sort properly.
-[1800] Biber.pm:131> WARN - legacy month field 'June' in entry 'Wyatt2022' is not an integer - this will probably not sort properly.
-[1800] Biber.pm:131> WARN - legacy month field '18--24 Jul' in entry 'Rasul2021' is not an integer - this will probably not sort properly.
-[1800] Biber.pm:133> INFO - WARNINGS: 3
+[158] biber-MSWIN64:340> INFO - === 
+[222] Biber.pm:419> INFO - Reading 'main.bcf'
+[431] Biber.pm:979> INFO - Found 16 citekeys in bib section 0
+[467] Biber.pm:4419> INFO - Processing section 0
+[486] Biber.pm:4610> INFO - Looking for bibtex file 'main.bib' for section 0
+[579] bibtex.pm:1713> INFO - LaTeX decoding ...
+[624] bibtex.pm:1519> INFO - Found BibTeX data source 'main.bib'
+[835] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'variable = shifted' with 'variable = non-ignorable'
+[835] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'normalization = NFD' with 'normalization = prenormalized'
+[835] Biber.pm:4239> INFO - Sorting list 'apa/apasortcite//global/global' of type 'entry' with template 'apa' and locale 'en-US'
+[835] Biber.pm:4245> INFO - No sort tailoring available for locale 'en-US'
+[885] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'variable = shifted' with 'variable = non-ignorable'
+[885] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'normalization = NFD' with 'normalization = prenormalized'
+[885] Biber.pm:4239> INFO - Sorting list 'apa/global//global/global' of type 'entry' with template 'apa' and locale 'en-US'
+[885] Biber.pm:4245> INFO - No sort tailoring available for locale 'en-US'
+[916] bbl.pm:660> INFO - Writing 'main.bbl' with encoding 'UTF-8'
+[953] bbl.pm:763> INFO - Output to main.bbl
+[953] Biber.pm:131> WARN - legacy month field 'January' in entry 'Nair2023' is not an integer - this will probably not sort properly.
+[953] Biber.pm:131> WARN - legacy month field 'June' in entry 'Wyatt2022' is not an integer - this will probably not sort properly.
+[953] Biber.pm:131> WARN - legacy month field '18--24 Jul' in entry 'Rasul2021' is not an integer - this will probably not sort properly.
+[953] Biber.pm:133> INFO - WARNINGS: 3

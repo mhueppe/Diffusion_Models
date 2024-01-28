@@ -1,3 +1,23 @@
+ 
+@InProceedings{Zhang2018,
+  author    = {Zhang, Zhaoyu and Li, Mengyan and Yu, Jun},
+  booktitle = {{SIGGRAPH} {Asia} 2018 {Technical} {Briefs}},
+  title     = {On the convergence and mode collapse of {GAN}},
+  year      = {2018},
+  address   = {New York, NY, USA},
+  month     = dec,
+  pages     = {1--4},
+  publisher = {Association for Computing Machinery},
+  series    = {{SA} '18},
+  abstract  = {Generative adversarial network (GAN) is a powerful generative model. However, it suffers from several problems, such as convergence instability and mode collapse. To overcome these drawbacks, this paper presents a novel architecture of GAN, which consists of one generator and two different discriminators. With the fact that GAN is the analogy of a minimax game, the proposed architecture is as follows. The generator (G) aims to produce realistic-looking samples to fool both of two discriminators. The first discriminator (D1) rewards high scores for samples from the data distribution, while the second one (D2) favors samples from the generator conversely. Specifically, the ResBlock and minibatch discrimination (MD) architectures are adopted in D1 to improve the diversity of the samples. The leaky rectified linear unit (Leaky ReLU) and batch normalization (BN) are replaced by the scaled exponential linear unit (SELU) in D2 to alleviate the convergence problem. A new loss function that minimizes the KL divergence is designed to better optimize the model. Extensive experiments on CIFAR-10/100 datasets demonstrate that the proposed method can effectively solve the problems of convergence and mode collapse.},
+  doi       = {10.1145/3283254.3283282},
+  file      = {:Zhang2018 - On the Convergence and Mode Collapse of GAN.pdf:PDF},
+  isbn      = {9781450360623},
+  keywords  = {GAN, convergence, mode collapse},
+  url       = {https://dl.acm.org/doi/10.1145/3283254.3283282},
+  urldate   = {2024-01-28},
+}
+
 @InProceedings{Ho2020,
   author    = {Ho, Jonathan and Jain, Ajay and Abbeel, Pieter},
   booktitle = {Advances in Neural Information Processing Systems},
@@ -129,6 +149,15 @@
   year      = {2023},
   month     = {January},
   pages     = {3434-3443},
+}
+
+@Misc{Ronneberger2015,
+  author        = {Olaf Ronneberger and Philipp Fischer and Thomas Brox},
+  title         = {U-Net: Convolutional Networks for Biomedical Image Segmentation},
+  year          = {2015},
+  archiveprefix = {arXiv},
+  eprint        = {1505.04597},
+  primaryclass  = {cs.CV},
 }
 
 @Comment{jabref-meta: databaseType:bibtex;}
